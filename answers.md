@@ -400,3 +400,33 @@ Nguồn tham chiếu:
 - Chương 05 — Tables & Hyperlinks
 - Phần "Cấu trúc cơ bản"
 - Ghi chú: "KHÔNG dùng table cho layout trang web"
+
+## B3 — Debug HTML
+
+Lỗi 1: Dòng 1 — `<!DOCTYPE>` thiếu `html` — sửa thành `<!DOCTYPE html>`
+
+Lỗi 2: Dòng 2 — thẻ `<html>` thiếu thuộc tính ngôn ngữ — sửa thành `<html lang="vi">`
+
+Lỗi 3: Dòng 4 — thẻ `<title>` chưa đóng — thêm `</title>`
+
+Lỗi 4: Dòng 5 — charset viết chưa chuẩn (`utf8`) — sửa thành `UTF-8`
+
+Lỗi 5: Dòng 8 — thẻ `<h1>` đóng sai — sửa `</h1>`
+
+Lỗi 6: Dòng 12 — thẻ `<a>` đầu tiên chưa đóng — thêm `</a>`
+
+Lỗi 7: Dòng 12 — liên kết `href="home"` chưa chuẩn — sửa thành `home.html`
+
+Lỗi 8: Dòng 18 — thẻ `<img>` thiếu thuộc tính `alt`
+
+Lỗi 9: Dòng 20 — đóng thẻ `<b>` sai thứ tự với `<p>`
+
+Lỗi 10: Dòng 26 — header row của bảng dùng `<td>` thay vì `<th>`
+
+Lỗi 11: Bảng thiếu cấu trúc semantic `<thead>` và `<tbody>`
+
+Lỗi 12: Trang có 2 thẻ `<main>` — đổi thẻ thứ 2 thành `<aside>`
+
+Lỗi 13: Trong `<footer>`, thẻ `<p>` chưa đóng
+
+Lỗi 14: Cuối file thiếu thẻ `</html>`
