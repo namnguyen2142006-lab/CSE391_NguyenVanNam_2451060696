@@ -449,3 +449,6 @@ Lỗi 14: Cuối file thiếu thẻ `</html>`
 - Input types được dùng:
   - Ô nhập từ khóa: Dùng thẻ <input> (Shopee không ghi rõ thuộc tính type, nên theo chuẩn HTML, trình duyệt sẽ mặc định nó là type="text").
   - Nút bấm kính lúp: Dùng <button type="button"> thay vì type="submit"
+
+## Phần D: video
+https://drive.google.com/drive/folders/1hNl88PF-2CoWYYkpwxWIP_5gPO8ckdar?usp=sharing
