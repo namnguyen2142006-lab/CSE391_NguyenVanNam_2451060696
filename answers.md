@@ -430,3 +430,22 @@ Lỗi 12: Trang có 2 thẻ `<main>` — đổi thẻ thứ 2 thành `<aside>`
 Lỗi 13: Trong `<footer>`, thẻ `<p>` chưa đóng
 
 Lỗi 14: Cuối file thiếu thẻ `</html>`
+
+## B4: Phân tích trang web thật (shopee.vn)
+
+1. 3 thẻ mà semantic HTML5 mà shopee sử dụng là:
+
+- <header> nằm trong khối <div id = "main">
+- <footer> nằm trong khối <div id = "main">
+- <section> nằm ở phần thân trang
+  2 thẻ mà chưa dùng đúng semantic:
+- Lạm dụng thẻ <div> bọc ngoài thay vì <main>
+- Một số menu điều hướng dùng <div> thay vì <nav>
+
+2. Qua quá trình kiểm tra thực tế bằng DevTools, phát hiện ra trang web không sử dụng thẻ <table> chuẩn cho phần thông số kỹ thuật. Thay vào đó, họ lạm dụng các thẻ <div> kết hợp CSS để dàn trang dạng lưới
+3. Phân tích thẻ <form> (Ô tìm kiếm trên Shopee.vn)
+
+- Action và Method: Rất đặc biệt, thẻ <form> không có thuộc tính action và method
+- Input types được dùng:
+  - Ô nhập từ khóa: Dùng thẻ <input> (Shopee không ghi rõ thuộc tính type, nên theo chuẩn HTML, trình duyệt sẽ mặc định nó là type="text").
+  - Nút bấm kính lúp: Dùng <button type="button"> thay vì type="submit"
