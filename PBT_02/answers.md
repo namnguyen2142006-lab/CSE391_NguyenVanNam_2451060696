@@ -1,6 +1,4 @@
-# PHẦN A — KIỂM TRA ĐỌC HIỂU
-
-## A1 — Các loại input HTML5
+## Câu A1
 
 1. type="email" → Ô nhập text, tự kiểm tra có ký tự @ và định dạng email hợp lệ → Dùng cho form đăng ký / đăng nhập
 2. type="password" → Ô nhập mật khẩu, ký tự hiển thị dạng chấm hoặc sao → Kiểm tra minlength / required → Dùng cho đăng nhập tài khoản
@@ -13,7 +11,7 @@
 9. type="file" → Nút chọn file upload → Có thể giới hạn loại file bằng accept → Dùng upload ảnh đánh giá sản phẩm
 10. type="range" → Thanh kéo slider → Giới hạn giá trị theo min / max → Dùng bộ lọc khoảng giá sản phẩm
 
-## Câu A2:Thuộc tính xác thực
+## Câu A2:
 
 - Trường hợp 1: `<input type="text" required value="">` _(User để trống)_
     Dự đoán: Form không thể submit. Trình duyệt sẽ focus vào ô nhập liệu này và hiện thông báo yêu cầu điền thông tin. Vì Thuộc tính `required` bắt buộc input này phải có dữ liệu. Vì `value=""` (rỗng), HTML5 validation sẽ chặn hành động gửi form
@@ -48,3 +46,35 @@
 
 - Khi nào dùng: Khi nút bấm hoặc ô nhập liệu không có chữ hiển thị mà chỉ dùng icon
 - Tại sao không dùng chung: Trình đọc màn hình sẽ ưu tiên đọc`<aria-label>` và bỏ qua `<label>`. HTML5 đã quy định thẻ `<label>` làm rất tốt nhiệm vụ của nó, việc dùng thêm `aria-label` là dư thừa và dễ gây xung đột, làm screen reader khó hiểu
+
+## Câu A4:
+
+1. Thuộc tính `loading="lazy"` trên thẻ `<img>`
+
+- Tác dụng: Trì hoãn tải ảnh cho đến khi người dùng cuộn chuột tới. Giúp trang web load nhanh hơn lúc đầu và tiết kiệm băng thông
+- Không nên dùng: Cho các ảnh ở ngay màn hình đầu tiên vì sẽ làm chậm hiển thị nội dung quan trọng nhất
+
+2. Nên cung cấp nhiều `<source>` trong thẻ `<video>` vì các trình duyệt hỗ trợ định dạng video khác nhau. Nhiều `<source>` tạo phương án dự phòng, đảm bảo video luôn chạy được trên mọi thiết bị.
+
+- 3 format phổ biến: `MP4`, `WebM`, `Ogg`
+
+3. Thuộc tính `alt` trên `<img>` dùng để hiện chữ thay thế khi ảnh lỗi
+
+- 3 ví dụ `alt` tốt:
+    1. Ảnh iPhone 16: `alt="Điện thoại iPhone 16 Pro Max màu titan"` (Mô tả chi tiết ảnh).
+    2. Ảnh trang trí: `alt=""` (Bắt buộc có nhưng để rỗng để screen reader tự động bỏ qua).
+    3. Biểu đồ Q1/2026: `alt="Biểu đồ doanh thu Q1/2026 đạt 50 tỷ đồng, tăng 20%"` _(Mô tả thẳng vào kết quả/số liệu của biểu đồ)._
+
+  ## Câu A5:
+
+Cách 1(dùng `<img>`): Dùng cho những bức ảnh độc lập trong văn bản mà không cần ghi chú giải thích, hoặc các ảnh chỉ mang tính minh họa.
+
+- 2 Ví dụ thực tế:
+    1. Ảnh đại diện: Hiển thị avatar
+    2. Banner: Banner quảng cáo lớn trên trang chủ
+
+2. Cách 2 (dùng `<figure>` kết hợp `<figcaption>`) Dùng khi bức ảnh (hoặc biểu đồ, video...) bắt buộc phải có một đoạn chú thích đi kèm để người đọc hiểu được ngữ cảnh. Thẻ `<figure>` giúp gói gọn ảnh và phần chữ giải thích thành một khối thống nhất có ý nghĩa
+
+- 2 Ví dụ thực tế:
+    1. Card sản phẩm: Đóng gói ảnh sản phẩm và chú thích là (Tên + Giá tiền) vào một khối để tạo thành danh sách sản phẩm
+    2. Biểu đồ: Đăng một biểu đồ doanh thu trong bài báo tài chính, bên dưới cần ghi rõ đây là biểu đồ chỉ gì
