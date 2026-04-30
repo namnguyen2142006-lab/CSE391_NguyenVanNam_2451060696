@@ -1,0 +1,146 @@
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Thanh toán đơn hàng</title>
+  </head>
+  <body>
+    <h2>Đơn hàng của bạn</h2>
+
+    <label for="search">Tìm linh kiện:</label>
+    <input list="products" id="search" name="search" placeholder="Tìm kiếm" />
+    <datalist id="products">
+      <option value="Chuột Logitech"></option>
+      <option value="Bàn phím cơ DareU"></option>
+      <option value="Màn hình ASUS 24 inch"></option>
+    </datalist>
+    <br /><br />
+
+    <label>Điểm tích lũy:</label>
+    <progress value="70" max="100"></progress>
+    <span>(70/100 điểm)</span>
+    <br /><br />
+
+    <h3>Giỏ hàng</h3>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Sản phẩm</th>
+          <th>Đơn giá</th>
+          <th>Số lượng</th>
+          <th>Thành tiền</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Chuột Logitech</td>
+          <td>400.000đ</td>
+          <td>1</td>
+          <td>400.000đ</td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>Bàn phím cơ DareU</td>
+          <td>600.000đ</td>
+          <td>1</td>
+          <td>600.000đ</td>
+        </tr>
+
+        <tr>
+          <td>3</td>
+          <td>Màn hình ASUS 24 inch</td>
+          <td>3.000.000đ</td>
+          <td>1</td>
+          <td>3.000.000đ</td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <th colspan="4">Tổng cộng:</th>
+          <td><output>4.000.000đ</output></td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <br />
+
+    <form action="#" method="POST">
+      <fieldset>
+        <legend>Phương thức thanh toán & Giảm giá</legend>
+
+        <label>Chọn phương thức:</label><br />
+
+        <input type="radio" id="cod" name="payment" value="cod" required />
+        <label for="cod">Thanh toán khi nhận hàng</label><br />
+
+        <input type="radio" id="ck" name="payment" value="ck" />
+        <label for="ck">Chuyển khoản</label><br />
+
+        <input type="radio" id="vi" name="payment" value="vi" />
+        <label for="vi">Ví điện tử</label><br /><br />
+
+        <label for="discount">Voucher(format: SALE + 4 số):</label>
+        <input
+          type="text"
+          id="discount"
+          name="discount"
+          pattern="SALE[0-9]{4}"
+          placeholder="VD: SALE2026"
+          title="Vui lòng nhập đúng định dạng SALE + 4 số (VD: SALE2026)"
+        />
+        <br /><br />
+
+        <label for="notes">Ghi chú:</label><br />
+        <textarea id="notes" name="notes" rows="3" placeholder="Ghi chú...">
+        </textarea>
+      </fieldset>
+
+      <br />
+
+      <fieldset>
+        <legend>Lịch trình giao hàng</legend>
+
+        <label for="ngaygiaohang">Ngày giao hàng mong muốn:</label>
+        <input
+          type="date"
+          id="ngaygiaohang"
+          name="ngaygiaohang"
+          min="2026-04-30"
+          required
+        />
+        <br /><br />
+
+        <label for="khunggio">Khung giờ giao hàng:</label>
+        <select id="khunggio" name="khunggio">
+          <option value="sang">Sáng (8h - 12h)</option>
+          <option value="chieu">Chiều (14h - 18h)</option>
+          <option value="toi">Tối (18h - 21h)</option>
+        </select>
+        <br /><br />
+
+        <label for="thoigian">Thời gian cho phép giao (Số ngày):</label>
+        <input
+          type="range"
+          id="thoigian"
+          name="thoigian"
+          min="1"
+          max="7"
+          step="1"
+          value="3"
+        />
+        <span>(Kéo để chọn từ 1 - 7 ngày)</span>
+      </fieldset>
+
+      <br />
+
+      <button type="submit" aria-label="Xác nhận đặt hàng">
+        Hoàn tất đặt hàng
+      </button>
+    </form>
+  </body>
+</html>
