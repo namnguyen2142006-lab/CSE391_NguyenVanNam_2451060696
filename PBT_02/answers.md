@@ -25,6 +25,26 @@
     Dự đoán: Form không thể submit. Trình duyệt hiện thông báo định dạng không khớp. Vì thuộc tính `pattern="[0-9]{10}"` yêu cầu người dùng phải nhập chính xác 10 chữ số. Chuỗi "abc123" vừa chứa chữ cái, vừa chỉ có 6 ký tự nên validation sẽ thất bại
 - Trường hợp 5: `<input type="password" minlength="8" value="123">` _(User gõ "123")_
     Dự đoán: Form không thể submit. Trình duyệt hiện thông báo độ dài chưa đủ. Vì thuộc tính `minlength="8"` yêu cầu chuỗi nhập vào phải có ít nhất 8 ký tự. Chuỗi "123" chỉ có 3 ký tự nên không hợp lệ
+
   ### So sánh với dự đoán
+
   Kết quả thực tế trùng với dự đoán.
   Cả 5 trường hợp đều bị browser chặn submit do vi phạm validation rules tương ứng như required, email format, max value, pattern và minlength.
+
+  ## Câu A3:
+
+1. Tại sao `<label for="email">` quan trọng?
+
+- Giúp screen reader nhận diện thẻ `<input>` tương ứng
+- Nếu thiếu, người dùng sẽ không biết ô đó yêu cầu nhập thông tin gì
+- Click thẳng vào dòng chữ thì con trỏ sẽ tự động nhảy vào ô nhập liệu
+
+2. Khi nào dùng `<fieldset>` + `<legend>`?
+
+- Dùng để gom nhóm các trường dữ liệu có liên quan với nhau trong một form dài
+- `<fieldset>` tạo khung bao quanh, còn `<legend>` làm tiêu đề cho nhóm đó
+
+3. `<aria-label>` dùng khi nào? Tại sao không dùng chung với `<label>`?
+
+- Khi nào dùng: Khi nút bấm hoặc ô nhập liệu không có chữ hiển thị mà chỉ dùng icon
+- Tại sao không dùng chung: Trình đọc màn hình sẽ ưu tiên đọc`<aria-label>` và bỏ qua `<label>`. HTML5 đã quy định thẻ `<label>` làm rất tốt nhiệm vụ của nó, việc dùng thêm `aria-label` là dư thừa và dễ gây xung đột, làm screen reader khó hiểu
