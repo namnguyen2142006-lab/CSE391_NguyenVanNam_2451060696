@@ -1,14 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portfolio</title>
+
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/about.css" />
   </head>
+
   <body>
     <header class="header">
       <div class="container header-container">
@@ -16,7 +19,7 @@
 
         <input type="checkbox" id="menu-toggle" class="menu-toggle" />
 
-        <label for="menu-toggle" class="hamburger"> ☰ </label>
+        <label for="menu-toggle" class="hamburger">☰</label>
 
         <nav class="nav">
           <a href="#about">About</a>
@@ -26,14 +29,42 @@
         </nav>
       </div>
     </header>
+
     <main>
       <section class="hero">
         <div class="container hero-content">
-          <h1>Hi, I'm <span class="highlight-name">Your Name</span></h1>
+          <h1>
+            Hi, I'm
+            <span class="highlight-name">Your Name</span>
+          </h1>
 
           <p>Full-Stack Developer | UI Designer | Problem Solver</p>
 
           <a href="#portfolio" class="cta-button"> View My Work </a>
+        </div>
+      </section>
+
+      <section id="about" class="about-section">
+        <div class="container">
+          <div class="about-grid">
+            <div class="about-image">
+              <img src="https://picsum.photos/400" alt="Profile Photo" />
+            </div>
+
+            <div class="about-content">
+              <h2>About Me</h2>
+
+              <p class="lead">
+                I'm a passionate developer with 3+ years of experience building
+                web applications.
+              </p>
+
+              <p>
+                Specialized in Frontend development with React and Vue. Also
+                experienced in Backend with Node.js and Python.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
