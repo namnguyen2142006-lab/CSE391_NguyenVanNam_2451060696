@@ -20,6 +20,9 @@
   margin-bottom: 1rem;
   line-height: 1.2;
 }
+.highlight-name {
+  color: rgb(234, 174, 100);
+}
 .hero p {
   font-size: 1.25rem;
   margin-bottom: 2rem;
