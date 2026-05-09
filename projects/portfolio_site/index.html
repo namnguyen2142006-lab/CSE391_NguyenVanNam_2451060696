@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="css/about.css" />
     <link rel="stylesheet" href="css/skills.css" />
     <link rel="stylesheet" href="css/portfolio.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/footer.css" />
   </head>
 
   <body>
@@ -269,6 +271,59 @@
           alt="Project 6 Large"
         />
       </div>
+      <section id="contact" class="contact-section">
+        <div class="container">
+          <h2>Get In Touch</h2>
+
+          <div class="contact-wrapper">
+            <div class="contact-info">
+              <h3>Contact Information</h3>
+
+              <p>
+                Feel free to reach out. I'm always open to discussing new
+                projects.
+              </p>
+
+              <div class="info-item">
+                <span class="icon">📧</span>
+                <span>your.email@example.com</span>
+              </div>
+
+              <div class="info-item">
+                <span class="icon">📍</span>
+                <span>Hanoi, Vietnam</span>
+              </div>
+            </div>
+
+            <form class="contact-form">
+              <div class="form-group">
+                <label for="name">Name</label>
+
+                <input type="text" id="name" name="name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+
+                <input type="email" id="email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
     <script src="js/main.js"></script>
   </body>
