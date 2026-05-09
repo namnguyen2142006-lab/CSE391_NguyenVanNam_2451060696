@@ -77,3 +77,8 @@
     grid-template-columns: 1fr;
   }
 }
+@media (max-width: 992px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
