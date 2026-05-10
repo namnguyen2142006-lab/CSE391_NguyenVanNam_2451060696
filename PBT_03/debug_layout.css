@@ -1,0 +1,47 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+  background-color: #e0e0e0;
+  overflow: hidden; /
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.fix-1 .sidebar {
+  box-sizing: border-box; 
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #ffcccc;
+}
+
+.fix-1 .content {
+  box-sizing: border-box; 
+  width: 660px;
+  padding: 30px;
+  border: 1px solid #ccc;
+  background-color: #ccffcc;
+}
+
+
+.fix-2 .sidebar {
+  /* Không có border-box, mặc định là content-box */
+  width: 258px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #ffcccc;
+}
+
+.fix-2 .content {
+  /* Không có border-box, mặc định là content-box */
+  width: 598px; 
+  padding: 30px;
+  border: 1px solid #ccc;
+  background-color: #ccffcc;
+}

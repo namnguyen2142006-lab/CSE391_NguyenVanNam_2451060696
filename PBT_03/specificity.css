@@ -1,0 +1,41 @@
+* {
+  color: black;
+} /* Specificity: 0, 0, 0 */
+
+p {
+  color: gray;
+} /* Specificity: 0, 0, 1 */
+
+.text {
+  color: pink;
+} /* Specificity: 0, 1, 0 */
+
+p.text {
+  color: orange;
+} /* Specificity: 0, 1, 1 */
+
+.text.highlight {
+  color: yellow;
+} /* Specificity: 0, 2, 0 */
+
+p.text.highlight {
+  color: green;
+} /* Specificity: 0, 2, 1 */
+
+#demo {
+  color: cyan;
+} /* Specificity: 1, 0, 0 */
+
+p#demo {
+  color: blue;
+} /* Specificity: 1, 0, 1 */
+
+/* 9. 1 ID + 1 Class */
+#demo.highlight {
+  color: purple;
+} /* Specificity: 1, 1, 0 */
+
+p#demo.text.highlight {
+  color: red;
+}
+/*specificity: 1, 2, 1;*/

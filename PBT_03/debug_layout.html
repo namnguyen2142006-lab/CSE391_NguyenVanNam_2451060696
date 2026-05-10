@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Debug Layout CSS</title>
+    <link rel="stylesheet" href="debug_layout.css" />
+  </head>
+  <body>
+    <h2>Cách 1: Sửa bằng border-box</h2>
+    <div class="container fix-1">
+      <div class="sidebar">
+        <h3>Sidebar (300px)</h3>
+        <p>Đã dùng box-sizing: border-box</p>
+      </div>
+      <div class="content">
+        <h3>Content (660px)</h3>
+        <p>Đã dùng box-sizing: border-box</p>
+      </div>
+    </div>
+
+    <h2 style="clear: both; padding-top: 30px">
+      Cách 2: Sửa bằng trừ thủ công width (Không dùng border-box)
+    </h2>
+    <div class="container fix-2">
+      <div class="sidebar">
+        <h3>Sidebar (Mới: 258px)</h3>
+        <p>Width đã bị trừ đi để bù cho padding & border</p>
+      </div>
+      <div class="content">
+        <h3>Content (Mới: 598px)</h3>
+        <p>Width đã bị trừ đi để bù cho padding & border</p>
+      </div>
+    </div>
+  </body>
+</html>

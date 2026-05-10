@@ -199,16 +199,64 @@ Nếu `.box-a` có `margin-bottom: -10px` và `.box-b` có `margin-top: 40px`.
 ## Bài B2 — Box Model Lab
 
 ### Phần 1 — Chứng minh content-box vs border-box
+
 - **Hộp 1 (content-box):** chiều rộng thực tế = **350px** (đo từ tab Computed của DevTools).
 - **Hộp 2 (border-box):** chiều rộng thực tế = **300px** (đo từ DevTools).
-- **Giải thích sự khác biệt:** 
-  - Ở Hộp 1 (content-box), thuộc tính `width: 300px` chỉ là kích thước của vùng lõi chứa chữ. Trình duyệt tự cộng thêm padding (20px * 2) và border (5px * 2) ra bên ngoài, làm hộp phình to thành 350px.
+- **Giải thích sự khác biệt:**
+  - Ở Hộp 1 (content-box), thuộc tính `width: 300px` chỉ là kích thước của vùng lõi chứa chữ. Trình duyệt tự cộng thêm padding (20px _ 2) và border (5px _ 2) ra bên ngoài, làm hộp phình to thành 350px.
   - Ở Hộp 2 (border-box), thuộc tính `width: 300px` được khóa cứng là kích thước tổng. Trình duyệt tự động ép padding và border lùi vào bên trong, vùng lõi chứa chữ bị ép hẹp lại (còn 250px) để đảm bảo tổng chiều rộng không bao giờ vượt qua 300px.
 
 ### Phần 2 — Bố cục 3 cột
+
 - **Tính toán khi KHÔNG dùng border-box:**
-  - Chiều rộng thực tế Cột trái (sidebar) = 250 + (15*2) = 280px
-  - Chiều rộng thực tế Cột giữa (content) = 500 + (20*2) = 540px
-  - Chiều rộng thực tế Cột phải (ads) = 250 + (15*2) = 280px
+  - Chiều rộng thực tế Cột trái (sidebar) = 250 + (15\*2) = 280px
+  - Chiều rộng thực tế Cột giữa (content) = 500 + (20\*2) = 540px
+  - Chiều rộng thực tế Cột phải (ads) = 250 + (15\*2) = 280px
   - **Tổng chiều rộng thực tế = 280 + 540 + 280 = 1100px.**
   - **Kết luận:** Vì tổng (1100px) lớn hơn kích thước container (1000px), nên cột thứ 3 không đủ chỗ để đứng cạnh và bị đẩy văng xuống dòng mới (vỡ layout). Khi thêm `box-sizing: border-box`, kích thước chuẩn được giữ nguyên là `250 + 500 + 250 = 1000px`, nên 3 cột xếp vừa vặn.
+
+## Bài B3 — Specificity Battle
+
+**1. Danh sách 10 rules và Specificity Score (ID, Class, Tag):**
+
+1. `*` → (0, 0, 0) — Màu đen (black)
+2. `p` → (0, 0, 1) — Màu xám (gray)
+3. `.text` → (0, 1, 0) — Màu hồng (pink)
+4. `p.text` → (0, 1, 1) — Màu cam (orange)
+5. `.text.highlight` → (0, 2, 0) — Màu vàng (yellow)
+6. `p.text.highlight` → (0, 2, 1) — Màu xanh lá (green)
+7. `#demo` → (1, 0, 0) — Màu cyan
+8. `p#demo` → (1, 0, 1) — Màu xanh dương (blue)
+9. `#demo.highlight` → (1, 1, 0) — Màu tím (purple)
+10. `p#demo.text.highlight` → (1, 2, 1) — Màu đỏ (red)
+
+**2. Element cuối cùng hiển thị màu gì? Tại sao?**
+
+- Chữ "Hello World" sẽ hiển thị màu **đỏ (red)**.
+- **Tại sao?** Vì quy tắc thứ 10 (`p#demo.text.highlight`) có điểm Specificity cao nhất (1, 2, 1). Trình duyệt sẽ luôn ưu tiên áp dụng CSS của quy tắc có điểm số cao nhất.
+
+**3. Thay đổi thứ tự rules trong CSS file. Kết quả có đổi không? Giải thích.**
+
+- Nếu đảo lộn thứ tự các dòng trong file `specificity.css` (ví dụ đem rule 10 lên trên cùng), kết quả **KHÔNG thay đổi**, chữ vẫn màu đỏ.
+- **Giải thích:** Thứ tự từ trên xuống dưới (Cascade) chỉ có ý nghĩa phân định thắng thua khi hai quy tắc có **cùng mức điểm Specificity**. Ở đây, quy tắc 10 có điểm tuyệt đối cao nhất, nên dù nằm ở đâu trong file, nó vẫn sẽ ghi đè các quy tắc khác.
+
+# PHẦN C — DEBUG & SUY LUẬN
+
+## Câu C1 — Gỡ lỗi CSS Layout
+
+**1. Tính chiều rộng thực tế (dựa trên mặc định `content-box`):**
+
+- **Sidebar:** 300px (width) + 40px (padding 2 bên) + 2px (border 2 bên) = **342px**
+- **Content:** 660px (width) + 60px (padding 2 bên) + 2px (border 2 bên) = **722px**
+
+**2. Giải thích tại sao bố cục bị hỏng:**
+
+- Tổng chiều rộng thực tế của hai cột khi đặt cạnh nhau là: `342px + 722px = 1064px`.
+- Kích thước này đã **vượt quá** sức chứa của thẻ cha `.container` (chỉ rộng 960px). Do thẻ cha không đủ chỗ chứa cột thứ hai, trình duyệt buộc phải đẩy cột `.content` rớt xuống dòng mới, làm vỡ bố cục (layout).
+
+**3. Đưa ra 2 cách sửa lỗi:**
+
+- **Cách 1 (Dùng `border-box`):** Thêm thuộc tính `box-sizing: border-box;` cho cả sidebar và content. Lúc này trình duyệt sẽ ép padding và border vào bên trong, giữ nguyên tổng chiều rộng đúng bằng 300px và 660px (Tổng đúng bằng 960px).
+- **Cách 2 (Không dùng `border-box` - Trừ thủ công):** Giữ nguyên `content-box`, nhưng ta phải trừ bớt giá trị `width` để nhường chỗ cho padding và border.
+  - Sidebar mới: `width: 258px;` (258 + 40 + 2 = 300)
+  - Content mới: `width: 598px;` (598 + 60 + 2 = 660)
