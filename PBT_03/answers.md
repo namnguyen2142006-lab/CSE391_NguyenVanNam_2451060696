@@ -195,3 +195,20 @@ Nếu `.box-a` có `margin-bottom: -10px` và `.box-b` có `margin-top: 40px`.
 3. **ID Selector (Bộ chọn ID):** `#about`, `#skills`, `#contact`
 4. **Descendant Selector (Bộ chọn hậu duệ):** `nav a`, `thead tr`, `figure img`
 5. **Pseudo-class (Giả lớp):** `nav a:hover`, `tbody tr:nth-child(even)`
+
+## Bài B2 — Box Model Lab
+
+### Phần 1 — Chứng minh content-box vs border-box
+- **Hộp 1 (content-box):** chiều rộng thực tế = **350px** (đo từ tab Computed của DevTools).
+- **Hộp 2 (border-box):** chiều rộng thực tế = **300px** (đo từ DevTools).
+- **Giải thích sự khác biệt:** 
+  - Ở Hộp 1 (content-box), thuộc tính `width: 300px` chỉ là kích thước của vùng lõi chứa chữ. Trình duyệt tự cộng thêm padding (20px * 2) và border (5px * 2) ra bên ngoài, làm hộp phình to thành 350px.
+  - Ở Hộp 2 (border-box), thuộc tính `width: 300px` được khóa cứng là kích thước tổng. Trình duyệt tự động ép padding và border lùi vào bên trong, vùng lõi chứa chữ bị ép hẹp lại (còn 250px) để đảm bảo tổng chiều rộng không bao giờ vượt qua 300px.
+
+### Phần 2 — Bố cục 3 cột
+- **Tính toán khi KHÔNG dùng border-box:**
+  - Chiều rộng thực tế Cột trái (sidebar) = 250 + (15*2) = 280px
+  - Chiều rộng thực tế Cột giữa (content) = 500 + (20*2) = 540px
+  - Chiều rộng thực tế Cột phải (ads) = 250 + (15*2) = 280px
+  - **Tổng chiều rộng thực tế = 280 + 540 + 280 = 1100px.**
+  - **Kết luận:** Vì tổng (1100px) lớn hơn kích thước container (1000px), nên cột thứ 3 không đủ chỗ để đứng cạnh và bị đẩy văng xuống dòng mới (vỡ layout). Khi thêm `box-sizing: border-box`, kích thước chuẩn được giữ nguyên là `250 + 500 + 250 = 1000px`, nên 3 cột xếp vừa vặn.

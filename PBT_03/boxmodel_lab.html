@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Box Model Lab</title>
+    <link rel="stylesheet" href="boxmodel.css" />
+  </head>
+  <body>
+    <h1>Box Model Lab</h1>
+
+    <!-- =================================== -->
+    <!-- PHẦN 1: CONTENT-BOX VS BORDER-BOX   -->
+    <!-- =================================== -->
+    <h2>Phần 1: Chứng minh Box Model</h2>
+    <div class="box-container">
+      <div class="box box-1">
+        <strong>Hộp 1 (content-box)</strong><br />
+        width: 300px<br />padding: 20px<br />border: 5px
+      </div>
+      <div class="box box-2">
+        <strong>Hộp 2 (border-box)</strong><br />
+        width: 300px<br />padding: 20px<br />border: 5px
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- =================================== -->
+    <!-- PHẦN 2: BỐ CỤC 3 CỘT (1000px)       -->
+    <!-- =================================== -->
+    <h2>Phần 2: Layout 3 cột (Container 1000px)</h2>
+    <p><em>Xóa class "fix-layout" ở dòng dưới để thấy layout bị vỡ:</em></p>
+
+    <!-- CLASS "fix-layout" ĐANG ĐƯỢC BẬT ĐỂ SỬA LỖI -->
+    <div class="layout-container fix-layout">
+      <div class="col sidebar">Cột Trái (250px)</div>
+      <div class="col content">Cột Giữa (500px)</div>
+      <div class="col ads">Cột Phải (250px)</div>
+    </div>
+  </body>
+</html>
