@@ -1,3 +1,5 @@
+# PHẦN A
+
 ## A1 — 3 Cách nhúng CSS vào HTML
 
 ---
@@ -183,3 +185,13 @@ Nếu `.box-a` có `margin-bottom: -10px` và `.box-b` có `margin-top: 40px`.
 4. **Nếu Rule A thêm `!important`:**
    - Phần tử sẽ có màu **đen (black)**.
    - **Giải thích:** Từ khóa `!important` là ngoại lệ lớn nhất trong CSS. Nó phá vỡ hoàn toàn quy tắc tính điểm Specificity thông thường. Bất cứ thuộc tính nào có gắn `!important` sẽ ghi đè lên mọi thứ khác (kể cả ID hay Inline style). Vì Rule A (`p`) quy định màu đen và được gắn `!important`, nó sẽ trở thành ưu tiên tuyệt đối.
+
+   # PHẦN B
+
+## Bài B1 — 5 loại Selector đã sử dụng trong `style.css`
+
+1. **Element Selector (Bộ chọn phần tử):** `body`, `header`, `table`, `footer`
+2. **Class Selector (Bộ chọn lớp):** `.active`
+3. **ID Selector (Bộ chọn ID):** `#about`, `#skills`, `#contact`
+4. **Descendant Selector (Bộ chọn hậu duệ):** `nav a`, `thead tr`, `figure img`
+5. **Pseudo-class (Giả lớp):** `nav a:hover`, `tbody tr:nth-child(even)`
