@@ -260,3 +260,23 @@ Nếu `.box-a` có `margin-bottom: -10px` và `.box-b` có `margin-top: 40px`.
 - **Cách 2 (Không dùng `border-box` - Trừ thủ công):** Giữ nguyên `content-box`, nhưng ta phải trừ bớt giá trị `width` để nhường chỗ cho padding và border.
   - Sidebar mới: `width: 258px;` (258 + 40 + 2 = 300)
   - Content mới: `width: 598px;` (598 + 60 + 2 = 660)
+
+## Câu C2 — Cascade Puzzle
+
+**1. "Sản phẩm A" (h2) có `font-size` = 20px và `color` = green**
+
+- **font-size: 20px** — Thẻ h2 này chịu tác động của bộ chọn `.card .title` quy định `font-size: 20px`. Nó ghi đè thuộc tính kế thừa từ `.container` (14px) vì nó nhắm mục tiêu trực tiếp và có điểm đặc hiệu cao hơn.
+- **color: green** — Có 2 quy tắc tranh chấp màu là `#featured .title` (màu đỏ) và `.highlight` (màu xanh lá). Dù bộ chọn ID có điểm đặc hiệu cao hơn, nhưng class `.highlight` lại chứa từ khóa `!important`. Theo luật Cascade, `!important` phá vỡ mọi thứ tự ưu tiên và giành chiến thắng tuyệt đối.
+
+**2. "Mô tả sản phẩm" (p trong thẻ card featured) có `color` = blue**
+
+- **Giải thích:** Thẻ `<p>` này bị nhắm trúng bởi quy tắc `.card p { color: inherit; }`. Từ khóa `inherit` ép phần tử này bắt buộc phải "kế thừa" màu sắc từ thẻ cha chứa nó (là thẻ `div` mang class `.card`). Thẻ cha `.card` đang được thiết lập `color: blue;`, do đó thẻ `<p>` này cũng mang màu xanh dương (blue).
+
+**3. "Sản phẩm B" (h2) có `font-size` = 20px và `color` = blue**
+
+- **font-size: 20px** — Tương tự Sản phẩm A, nó chịu tác động của bộ chọn trực tiếp `.card .title`.
+- **color: blue** — Thẻ h2 này không có bất kỳ quy tắc CSS nào trực tiếp gán màu cho nó (quy tắc `#featured .title` không có tác dụng vì Sản phẩm B không nằm trong thẻ mang ID featured). Do không có màu tự định nghĩa, nó sẽ mặc định "kế thừa" màu từ thẻ cha gần nhất là `.card`. Vì `.card` có màu xanh dương (blue), nó cũng có màu xanh dương.
+
+**4. "Mô tả sản phẩm B" (p.highlight) có `color` = green**
+
+- **Giải thích:** Thẻ `<p>` này vừa bị tác động bởi `.card p` (ép kế thừa màu blue), lại vừa mang class `.highlight` (màu green). Một lần nữa, từ khóa `!important` trong `.highlight` kích hoạt sức mạnh tối thượng của mình, đánh bại quy tắc kế thừa và áp đặt màu xanh lá (green) cho văn bản.

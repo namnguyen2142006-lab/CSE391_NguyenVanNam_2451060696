@@ -31,7 +31,7 @@ body {
 
 
 .fix-2 .sidebar {
-  /* Không có border-box, mặc định là content-box */
+ 
   width: 258px;
   padding: 20px;
   border: 1px solid #ccc;
@@ -39,7 +39,7 @@ body {
 }
 
 .fix-2 .content {
-  /* Không có border-box, mặc định là content-box */
+ 
   width: 598px; 
   padding: 30px;
   border: 1px solid #ccc;
