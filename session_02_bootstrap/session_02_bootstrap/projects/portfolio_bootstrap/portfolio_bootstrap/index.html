@@ -89,78 +89,116 @@
         </div>
       </section>
 
-      <section id="about" class="about-section">
+      <section id="about" class="py-5">
         <div class="container">
-          <div class="about-grid">
-            <div class="about-image">
+          <div class="text-center mb-5">
+            <h2 class="fw-bold">About Me</h2>
+
+            <p class="text-muted">Get to know more about me and my journey.</p>
+          </div>
+
+          <div class="row align-items-center g-5">
+            <!-- Profile Image -->
+            <div class="col-lg-5 text-center">
               <img
-                src="https://fastly.picsum.photos/id/941/400/400.jpg?hmac=WdghaFHvMg5lqjDBgxAM94fNAdL9HOClKE2Nc_oN3pA"
-                alt="Profile Photo"
+                src="https://picsum.photos/400"
+                alt="Profile"
+                class="img-fluid rounded-circle shadow"
+                style="max-width: 300px"
               />
             </div>
 
-            <div class="about-content">
-              <h2>About Me</h2>
+            <!-- About Content -->
+            <div class="col-lg-7">
+              <h3 class="fw-bold mb-3">Frontend Developer & UI Designer</h3>
 
               <p class="lead">
-                I'm a passionate developer with 3+ years of experience building
-                web applications.
+                I enjoy building responsive and user-friendly websites using
+                modern frontend technologies.
               </p>
 
-              <p>
-                Specialized in Frontend development with React and Vue. Also
-                experienced in Backend with Node.js and Python.
+              <p class="text-muted">
+                I focus on creating clean layouts, good user experiences, and
+                scalable frontend architecture using HTML, CSS, Bootstrap, and
+                JavaScript.
               </p>
+
+              <div class="mt-4">
+                <a href="#contact" class="btn btn-primary me-2"> Contact Me </a>
+
+                <a href="#" class="btn btn-outline-dark"> Download CV </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <section id="skills" class="skills-section">
+      <
+      <section id="skills" class="py-5 bg-light">
         <div class="container">
-          <h2>My Skills</h2>
+          <div class="text-center mb-5">
+            <h2 class="fw-bold">My Skills</h2>
 
-          <div class="skills-grid">
-            <div class="skill-item">
-              <div class="skill-top">
-                <span class="skill-name">HTML5</span>
-                <span class="skill-percent">95%</span>
-              </div>
+            <p class="text-muted">Technologies and tools I work with.</p>
+          </div>
 
-              <div class="skill-bar">
-                <div class="skill-progress html"></div>
-              </div>
-            </div>
+          <div class="row g-4">
+            <!-- Skill 1 -->
+            <div class="col-md-6">
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="fw-semibold"> HTML5 </span>
 
-            <div class="skill-item">
-              <div class="skill-top">
-                <span class="skill-name">CSS3</span>
-                <span class="skill-percent">90%</span>
-              </div>
+                  <span class="text-primary fw-semibold"> 95% </span>
+                </div>
 
-              <div class="skill-bar">
-                <div class="skill-progress css"></div>
+                <div class="progress" style="height: 12px">
+                  <div class="progress-bar bg-primary" style="width: 95%"></div>
+                </div>
               </div>
             </div>
 
-            <div class="skill-item">
-              <div class="skill-top">
-                <span class="skill-name">JavaScript</span>
-                <span class="skill-percent">80%</span>
-              </div>
+            <!-- Skill 2 -->
+            <div class="col-md-6">
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="fw-semibold"> CSS3 </span>
 
-              <div class="skill-bar">
-                <div class="skill-progress js"></div>
+                  <span class="text-success fw-semibold"> 90% </span>
+                </div>
+
+                <div class="progress" style="height: 12px">
+                  <div class="progress-bar bg-success" style="width: 90%"></div>
+                </div>
               </div>
             </div>
 
-            <div class="skill-item">
-              <div class="skill-top">
-                <span class="skill-name">React</span>
-                <span class="skill-percent">75%</span>
-              </div>
+            <!-- Skill 3 -->
+            <div class="col-md-6">
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="fw-semibold"> JavaScript </span>
 
-              <div class="skill-bar">
-                <div class="skill-progress react"></div>
+                  <span class="text-warning fw-semibold"> 80% </span>
+                </div>
+
+                <div class="progress" style="height: 12px">
+                  <div class="progress-bar bg-warning" style="width: 80%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skill 4 -->
+            <div class="col-md-6">
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="fw-semibold"> Bootstrap 5 </span>
+
+                  <span class="text-danger fw-semibold"> 85% </span>
+                </div>
+
+                <div class="progress" style="height: 12px">
+                  <div class="progress-bar bg-danger" style="width: 85%"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -324,13 +362,123 @@
             </div>
 
             <!-- Sidebar placeholder -->
+            <!-- Sidebar -->
             <div class="col-lg-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Sidebar</h5>
-                  <p class="card-text text-muted">
-                    Sidebar widgets will be added in the next commit.
-                  </p>
+              <div class="sticky-top pt-4">
+                <!-- Search Widget -->
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <h5 class="card-title">Search</h5>
+
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Search..."
+                      />
+
+                      <button class="btn btn-primary" type="button">Go</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Categories Widget -->
+                <div class="card mb-4">
+                  <div class="card-header bg-white">
+                    <h5 class="mb-0">Categories</h5>
+                  </div>
+
+                  <ul class="list-group list-group-flush">
+                    <li
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      Technology
+                      <span class="badge bg-primary rounded-pill"> 12 </span>
+                    </li>
+
+                    <li
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      Bootstrap
+                      <span class="badge bg-success rounded-pill"> 8 </span>
+                    </li>
+
+                    <li
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      JavaScript
+                      <span class="badge bg-warning text-dark rounded-pill">
+                        15
+                      </span>
+                    </li>
+
+                    <li
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      UI Design
+                      <span class="badge bg-danger rounded-pill"> 5 </span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Recent Posts Widget -->
+                <div class="card mb-4">
+                  <div class="card-header bg-white">
+                    <h5 class="mb-0">Recent Posts</h5>
+                  </div>
+
+                  <div class="card-body">
+                    <!-- Recent Post 1 -->
+                    <div class="d-flex mb-3">
+                      <img
+                        src="https://picsum.photos/60?random=21"
+                        class="rounded"
+                        width="60"
+                        height="60"
+                        alt="Recent Post"
+                      />
+
+                      <div class="ms-3">
+                        <h6 class="mb-1">Bootstrap Layout Tips</h6>
+
+                        <small class="text-muted"> Jan 15, 2026 </small>
+                      </div>
+                    </div>
+
+                    <!-- Recent Post 2 -->
+                    <div class="d-flex mb-3">
+                      <img
+                        src="https://picsum.photos/60?random=22"
+                        class="rounded"
+                        width="60"
+                        height="60"
+                        alt="Recent Post"
+                      />
+
+                      <div class="ms-3">
+                        <h6 class="mb-1">CSS Flexbox Guide</h6>
+
+                        <small class="text-muted"> Jan 18, 2026 </small>
+                      </div>
+                    </div>
+
+                    <!-- Recent Post 3 -->
+                    <div class="d-flex">
+                      <img
+                        src="https://picsum.photos/60?random=23"
+                        class="rounded"
+                        width="60"
+                        height="60"
+                        alt="Recent Post"
+                      />
+
+                      <div class="ms-3">
+                        <h6 class="mb-1">Responsive Design Basics</h6>
+
+                        <small class="text-muted"> Jan 20, 2026 </small>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
