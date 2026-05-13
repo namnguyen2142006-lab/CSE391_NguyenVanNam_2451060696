@@ -280,3 +280,7 @@ Nếu `.box-a` có `margin-bottom: -10px` và `.box-b` có `margin-top: 40px`.
 **4. "Mô tả sản phẩm B" (p.highlight) có `color` = green**
 
 - **Giải thích:** Thẻ `<p>` này vừa bị tác động bởi `.card p` (ép kế thừa màu blue), lại vừa mang class `.highlight` (màu green). Một lần nữa, từ khóa `!important` trong `.highlight` kích hoạt sức mạnh tối thượng của mình, đánh bại quy tắc kế thừa và áp đặt màu xanh lá (green) cho văn bản.
+
+### VIDEO THỰC HÀNH
+
+https://drive.google.com/file/d/12EHi7qZIk7HzEfrrhF7glds-XituewOc/view?usp=sharing
