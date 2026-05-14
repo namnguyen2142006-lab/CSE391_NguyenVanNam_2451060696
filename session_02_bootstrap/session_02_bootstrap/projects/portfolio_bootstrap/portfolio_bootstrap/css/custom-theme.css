@@ -1,0 +1,51 @@
+:root {
+  --bs-primary: #14b8a6;
+  --bs-primary-hover: #0d9488;
+  --bs-primary-rgb: 20, 184, 166;
+
+  --bs-secondary: #64748b;
+  --bs-secondary-rgb: 100, 116, 139;
+
+  --bs-body-font-family: "Inter", system-ui, sans-serif;
+  --bs-body-font-size: 1rem;
+  --bs-body-line-height: 1.6;
+
+  --custom-primary-light: #ccfbf1;
+  --custom-heading: #0f172a;
+  --custom-body: #334155;
+  --custom-border: #e2e8f0;
+  --custom-bg: #f8fafc;
+}
+body {
+  font-family: var(--bs-body-font-family);
+  color: var(--custom-body);
+  background-color: var(--custom-bg);
+}
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--bs-primary-hover);
+  border-color: var(--bs-primary-hover);
+}
+.btn-outline-primary {
+  color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: #ffffff;
+}
+.text-primary {
+  color: var(--bs-primary) !important;
+}
+
+.bg-primary {
+  background-color: var(--bs-primary) !important;
+}
