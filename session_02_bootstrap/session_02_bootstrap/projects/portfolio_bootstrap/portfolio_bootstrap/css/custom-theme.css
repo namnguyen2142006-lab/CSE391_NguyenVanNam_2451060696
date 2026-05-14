@@ -49,3 +49,20 @@ body {
 .bg-primary {
   background-color: var(--bs-primary) !important;
 }
+/* Custom spacing scale */
+.py-section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.gap-section {
+  gap: 2rem;
+}
+
+.mt-section {
+  margin-top: 5rem;
+}
+
+.mb-section {
+  margin-bottom: 5rem;
+}
