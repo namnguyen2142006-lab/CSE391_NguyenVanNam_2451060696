@@ -66,3 +66,73 @@ body {
 .mb-section {
   margin-bottom: 5rem;
 }
+:root {
+  --bs-border-radius: 0.5rem;
+  --bs-border-radius-sm: 0.375rem;
+  --bs-border-radius-lg: 1rem;
+
+  --custom-shadow-sm: 0 2px 15px rgba(0, 0, 0, 0.05);
+  --custom-shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+.card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: var(--custom-shadow-md);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+.navbar {
+  box-shadow: var(--custom-shadow-sm);
+  backdrop-filter: blur(10px);
+}
+.btn {
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+.form-control,
+.form-select {
+  border-radius: 10px;
+  border-color: var(--custom-border);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.2rem rgba(20, 184, 166, 0.15);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--custom-heading);
+  font-weight: 700;
+}
+
+p {
+  color: var(--custom-body);
+}
+.bg-light {
+  background-color: #f8fafc !important;
+}
+.progress {
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  border-radius: 999px;
+}
+.badge {
+  padding: 0.5em 0.8em;
+  font-weight: 600;
+}

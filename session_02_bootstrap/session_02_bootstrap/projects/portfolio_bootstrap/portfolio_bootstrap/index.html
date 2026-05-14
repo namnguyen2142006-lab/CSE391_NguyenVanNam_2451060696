@@ -129,7 +129,7 @@
           </div>
         </div>
       </section>
-      <
+
       <section id="skills" class="py-5 bg-light">
         <div class="container">
           <div class="text-center mb-5">
@@ -679,140 +679,209 @@
         </div>
       </section>
 
-      <section id="contact" class="contact-section">
+      <section id="contact" class="py-section bg-light">
         <div class="container">
-          <h2>Get In Touch</h2>
+          <!-- Section Title -->
+          <div class="text-center mb-5">
+            <h2 class="fw-bold">Get In Touch</h2>
 
-          <div class="contact-wrapper">
-            <div class="contact-info">
-              <h3>Contact Information</h3>
+            <p class="text-muted">
+              Feel free to contact me for collaboration or project discussion.
+            </p>
+          </div>
 
-              <p>
-                Feel free to reach out. I'm always open to discussing new
-                projects.
-              </p>
+          <div class="row g-5 align-items-start">
+            <!-- Contact Info -->
+            <div class="col-lg-5">
+              <div class="card h-100">
+                <div class="card-body p-4">
+                  <h3 class="fw-bold mb-4">Contact Information</h3>
 
-              <div class="info-item">
-                <span class="icon">📧</span>
-                <span>your.email@example.com</span>
-              </div>
+                  <p class="text-muted mb-4">
+                    I’m always open to discussing new projects, creative ideas,
+                    or opportunities.
+                  </p>
 
-              <div class="info-item">
-                <span class="icon">📍</span>
-                <span>Hanoi, Vietnam</span>
+                  <!-- Email -->
+                  <div class="d-flex align-items-center mb-4">
+                    <div class="me-3">
+                      <div
+                        class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center"
+                        style="width: 50px; height: 50px"
+                      >
+                        <i class="bi bi-envelope-fill"></i>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h6 class="mb-1 fw-semibold">Email</h6>
+
+                      <p class="mb-0 text-muted">namnguyen@example.com</p>
+                    </div>
+                  </div>
+
+                  <!-- Location -->
+                  <div class="d-flex align-items-center">
+                    <div class="me-3">
+                      <div
+                        class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center"
+                        style="width: 50px; height: 50px"
+                      >
+                        <i class="bi bi-geo-alt-fill"></i>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h6 class="mb-1 fw-semibold">Location</h6>
+
+                      <p class="mb-0 text-muted">Hanoi, Vietnam</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <form class="contact-form">
-              <div class="form-group">
-                <label for="name">Full Name</label>
+            <!-- Contact Form -->
+            <div class="col-lg-7">
+              <div class="card">
+                <div class="card-body p-4">
+                  <form>
+                    <!-- Name -->
+                    <div class="mb-3">
+                      <label class="form-label fw-semibold"> Full Name </label>
 
-                <input type="text" id="name" name="name" required />
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your name"
+                      />
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                      <label class="form-label fw-semibold">
+                        Email Address
+                      </label>
+
+                      <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Enter your email"
+                      />
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="mb-3">
+                      <label class="form-label fw-semibold"> Subject </label>
+
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter subject"
+                      />
+                    </div>
+
+                    <!-- Message -->
+                    <div class="mb-4">
+                      <label class="form-label fw-semibold"> Message </label>
+
+                      <textarea
+                        class="form-control"
+                        rows="6"
+                        placeholder="Write your message..."
+                      ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary px-5">
+                      Send Message
+                    </button>
+                  </form>
+                </div>
               </div>
-
-              <div class="form-group">
-                <label for="email">Email Address</label>
-
-                <input type="email" id="email" name="email" required />
-              </div>
-
-              <div class="form-group">
-                <label for="message">Message</label>
-
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                ></textarea>
-              </div>
-
-              <button type="submit" class="submit-btn">Send Message</button>
-            </form>
+            </div>
           </div>
         </div>
       </section>
-      <footer class="footer">
+      <footer class="bg-dark text-white py-5">
         <div class="container">
-          <div class="footer-content">
-            <div class="footer-logo">YourName</div>
+          <div class="row gy-4 align-items-center">
+            <!-- Brand -->
+            <div class="col-lg-4 text-center text-lg-start">
+              <h3 class="fw-bold mb-2 text-primary">YourName</h3>
 
-            <p class="footer-tagline">Building digital experiences</p>
+              <p class="text-light opacity-75 mb-0">
+                Building modern and responsive digital experiences.
+              </p>
+            </div>
 
-            <div class="social-links">
-              <a href="#" class="social-link" aria-label="GitHub">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
+            <!-- Quick Links -->
+            <div class="col-lg-4 text-center">
+              <h5 class="fw-semibold mb-3">Quick Links</h5>
+
+              <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="#about" class="text-decoration-none text-light">
+                  About
+                </a>
+
+                <a href="#skills" class="text-decoration-none text-light">
+                  Skills
+                </a>
+
+                <a href="#portfolio" class="text-decoration-none text-light">
+                  Portfolio
+                </a>
+
+                <a href="#blog" class="text-decoration-none text-light">
+                  Blog
+                </a>
+
+                <a href="#contact" class="text-decoration-none text-light">
+                  Contact
+                </a>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="col-lg-4 text-center text-lg-end">
+              <h5 class="fw-semibold mb-3">Follow Me</h5>
+
+              <div
+                class="d-flex justify-content-center justify-content-lg-end gap-3"
+              >
+                <a
+                  href="#"
+                  class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center"
+                  style="width: 45px; height: 45px"
                 >
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12
-    0 5.302 3.438 9.8 8.207 11.387
-    .599.111.793-.261.793-.577v-2.234
-    c-3.338.726-4.033-1.416-4.033-1.416
-    -.546-1.387-1.333-1.756-1.333-1.756
-    -1.089-.745.083-.729.083-.729
-    1.205.084 1.839 1.237 1.839 1.237
-    1.07 1.834 2.807 1.304 3.492.997
-    .107-.775.418-1.305.762-1.604
-    -2.665-.305-5.467-1.334-5.467-5.931
-    0-1.311.469-2.381 1.236-3.221
-    -.124-.303-.535-1.524.117-3.176
-    0 0 1.008-.322 3.301 1.23
-    .957-.266 1.983-.399 3.003-.404
-    1.02.005 2.047.138 3.006.404
-    2.291-1.552 3.297-1.23 3.297-1.23
-    .653 1.653.242 2.874.118 3.176
-    .77.84 1.235 1.911 1.235 3.221
-    0 4.609-2.807 5.624-5.479 5.921
-    .43.372.823 1.102.823 2.222v3.293
-    c0 .319.192.694.801.576
-    4.765-1.589 8.199-6.086 8.199-11.386
-    0-6.627-5.373-12-12-12z"
-                  /></svg
-              ></a>
+                  <i class="bi bi-github"></i>
+                </a>
 
-              <a href="#" class="social-link" aria-label="LinkedIn">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
+                <a
+                  href="#"
+                  class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center"
+                  style="width: 45px; height: 45px"
                 >
-                  <path
-                    d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0
-    4.88 0 3.5 1.12 1 2.48 1
-    4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zm7.5
-    0h3.8v2.2h.1c.5-1 1.8-2.2 3.8-2.2
-    4 0 4.8 2.6 4.8 6V24h-4v-7.1
-    c0-1.7 0-3.9-2.4-3.9s-2.7 1.8-2.7
-    3.8V24h-4V8z"
-                  />
-                </svg>
-              </a>
+                  <i class="bi bi-linkedin"></i>
+                </a>
 
-              <a href="#" class="social-link" aria-label="Email">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
+                <a
+                  href="#"
+                  class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center"
+                  style="width: 45px; height: 45px"
                 >
-                  <path
-                    d="M12 13.065L.015 6.75A2 2 0 012
-    5h20a2 2 0 011.985 1.75L12 13.065zM12
-    15L0 8.685V19a2 2 0 002 2h20a2 2 0
-    002-2V8.685L12 15z"
-                  />
-                </svg>
-              </a>
+                  <i class="bi bi-envelope-fill"></i>
+                </a>
+              </div>
             </div>
           </div>
 
-          <div class="footer-bottom">
-            <p>© 2026 YourName. All rights reserved.</p>
+          <!-- Bottom -->
+          <hr class="border-secondary my-4" />
+
+          <div class="text-center">
+            <p class="mb-0 text-light opacity-75">
+              © 2026 YourName. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>
