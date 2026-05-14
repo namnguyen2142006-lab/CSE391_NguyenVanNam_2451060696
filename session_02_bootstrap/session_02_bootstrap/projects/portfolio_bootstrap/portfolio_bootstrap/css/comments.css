@@ -1,0 +1,31 @@
+#comments img.rounded-circle {
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+#comments .card {
+  border-radius: 16px;
+}
+
+#comments textarea {
+  resize: vertical;
+}
+
+@media (max-width: 576px) {
+  #comments .d-flex {
+    flex-direction: column;
+  }
+
+  #comments img.rounded-circle {
+    width: 56px;
+    height: 56px;
+  }
+
+  #comments .btn {
+    width: 100%;
+  }
+
+  #comments .card-body {
+    padding: 1rem !important;
+  }
+}
