@@ -106,12 +106,7 @@ Ví dụ:
 - Kết quả: 1 hàng, 4 cột bằng nhau
 
 Sơ đồ:
-
-```txt
 | Item 1 | Item 2 | Item 3 | Item 4 |
-```
-
----
 
 ### Trường hợp 2
 
@@ -134,14 +129,9 @@ Sơ đồ:
 - 6 items tạo thành 3 hàng, 2 cột
 
 Sơ đồ:
-
-```txt
 | Item 1 | Item 2 |
 | Item 3 | Item 4 |
 | Item 5 | Item 6 |
-```
-
----
 
 ### Trường hợp 3
 
@@ -159,12 +149,7 @@ Sơ đồ:
 - `align-items: center` căn giữa theo chiều dọc
 
 Sơ đồ:
-
-```txt
-| Item 1              Item 2              Item 3 |
-```
-
----
+| Item 1 Item 2 Item 3 |
 
 ### Trường hợp 4
 
@@ -185,13 +170,8 @@ Sơ đồ:
 - 3 items nằm trên cùng 1 hàng
 
 Sơ đồ:
-
-```txt
-| 200px |        1fr        | 200px |
-| Item1 |       Item2       | Item3 |
-```
-
----
+| 200px | 1fr | 200px |
+| Item1 | Item2 | Item3 |
 
 ### Trường hợp 5
 
@@ -210,9 +190,130 @@ Sơ đồ:
 - Item 7 nằm ở cột đầu tiên của hàng cuối
 
 Sơ đồ:
-
-```txt
 | Item 1 | Item 2 | Item 3 |
 | Item 4 | Item 5 | Item 6 |
-| Item 7 |        |        |
+| Item 7 | | |
+
+# PHẦN C — SUY LUẬN
+
+## Câu C1 — Flexbox vs Grid: Khi nào dùng gì?
+
+### 1. Navigation bar ngang
+
+- Nên dùng: **Flexbox**
+- Lý do: Navbar chủ yếu là layout 1 chiều theo hàng ngang.
+- Ta cần sắp xếp logo, menu và buttons trên cùng một trục ngang.
+- Flexbox phù hợp vì có `justify-content` để chia khoảng cách và `align-items` để căn giữa theo chiều dọc.
+
+### 2. Lưới ảnh Instagram 3 cột
+
+- Nên dùng: **Grid**
+- Lý do: Đây là layout 2 chiều gồm hàng và cột.
+- Số ảnh không biết trước, nhưng cần giữ 3 cột đều nhau.
+- Grid phù hợp vì có thể dùng `grid-template-columns: repeat(3, 1fr)`.
+
+### 3. Layout blog: main content + sidebar
+
+- Nên dùng: **Grid**
+- Lý do: Layout blog cần chia vùng rõ ràng: nội dung chính và sidebar.
+- Grid phù hợp để tạo cột chính và cột phụ.
+- Ví dụ: `grid-template-columns: 1fr 300px`.
+
+### 4. Footer với 4 cột thông tin
+
+- Nên dùng: **Grid**
+- Lý do: Footer có 4 nhóm nội dung cần chia thành 4 cột đều nhau.
+- Grid giúp tạo cột rõ ràng và dễ responsive.
+- Ví dụ: `grid-template-columns: repeat(4, 1fr)`.
+
+### 5. Card sản phẩm
+
+- Nên dùng: **Flexbox**
+- Lý do: Nội dung trong card xếp theo 1 chiều dọc: ảnh, text, giá, nút.
+- Flexbox phù hợp vì có thể dùng `flex-direction: column`.
+- Để nút luôn nằm dưới đáy card, dùng `margin-top: auto`.
+
+## Câu C2 — Debug Flexbox
+
+### Lỗi 1 — Cards không đều chiều cao, nút "Mua" bị nhảy lên/xuống
+
+#### Nguyên nhân
+
+- `.card` chưa dùng Flexbox theo chiều dọc.
+- Nội dung mỗi card dài ngắn khác nhau.
+- Button nằm ngay sau text nên vị trí button không đồng đều.
+
+---
+
+#### Code sửa
+
+```css
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  padding: 16px;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card .btn {
+  margin-top: auto;
+
+  padding: 10px;
+}
+```
+
+### Lỗi 2 — Hero không nằm giữa màn hình
+
+#### Nguyên nhân
+
+- .hero có display: flex nhưng thiếu:justify-content,align-items. Mặc định Flexbox đặt item ở góc trái trên.
+
+#### code sửa
+
+```css
+.hero {
+  height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.hero-content {
+  text-align: center;
+}
+```
+
+### Lỗi 3 — Sidebar bị co lại khi content quá dài
+
+#### Nguyên nhân
+
+- Trong Flexbox, items mặc định có thể bị shrink.
+- Sidebar có width: 250px nhưng vẫn bị co khi content quá lớn.
+
+```css
+.layout {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+
+  flex-shrink: 0;
+}
+
+.content {
+  flex: 1;
+}
 ```

@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 40px;
+  font-family: Arial;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 30%;
+  margin: 1.5%;
+
+  border: 2px solid gray;
+  display: flex;
+  flex-direction: column;
+  min-height: 350px;
+  padding: 16px;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card h3 {
+  margin: 12px 0;
+}
+
+.card .btn {
+  padding: 10px;
+  margin-top: auto;
+}
