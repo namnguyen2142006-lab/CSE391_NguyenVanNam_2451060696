@@ -1,0 +1,128 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* PRODUCT CARD */
+.product-card {
+  background-color: white;
+
+  border-radius: 12px;
+
+  padding: 16px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* IMAGE WRAPPER */
+.image-wrapper {
+  overflow: hidden;
+
+  border-radius: 10px;
+}
+
+.image-wrapper img {
+  width: 100%;
+
+  display: block;
+}
+
+button {
+  margin-top: 16px;
+
+  padding: 12px 20px;
+
+  border: none;
+
+  background-color: #2563eb;
+
+  color: white;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+.product-card {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+
+  color: #fff;
+
+  transform: scale(1.05);
+}
+.image-wrapper img {
+  transition: transform 0.3s ease;
+}
+
+.image-wrapper:hover img {
+  transform: scale(1.1);
+}
+.spinner {
+  width: 60px;
+  height: 60px;
+
+  border: 6px solid #ddd;
+
+  border-top: 6px solid #2563eb;
+
+  border-radius: 50%;
+
+  margin: 40px auto;
+
+  animation: spin 1s linear infinite;
+}
+
+/* KEYFRAMES */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
