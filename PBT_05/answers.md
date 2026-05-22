@@ -297,3 +297,17 @@ Hoặc dùng extension VS Code:
 - Live Sass Compiler
 - Click "Watch Sass"
 - Tự động tạo file `.css`
+
+## B3 — Compile SCSS
+
+Lệnh compile SCSS sang CSS:
+
+```bash
+sass scss/style.scss scss/style.css
+```
+
+Hoặc dùng VS Code extension:
+
+- Live Sass Compiler
+- Click "Watch Sass"
+- Tự động tạo file `style.css`
