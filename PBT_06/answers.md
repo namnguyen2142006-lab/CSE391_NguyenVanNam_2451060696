@@ -318,3 +318,200 @@ $primary: #e63946;
 ```
 
 Cách này giúp giao diện nhất quán, dễ maintain và chuyên nghiệp hơn.
+
+## Câu C2 — So sánh CSS thuần và Bootstrap
+
+### 1. CSS thuần: Navbar responsive + Product card
+
+Ví dụ CSS thuần từ PBT trước:
+
+```html
+<header class="header">
+  <div class="logo">MyShop</div>
+
+  <button class="hamburger">☰</button>
+
+  <nav class="nav-links">
+    <a href="#">Trang chủ</a>
+    <a href="#">Sản phẩm</a>
+    <a href="#">Liên hệ</a>
+  </nav>
+</header>
+
+<div class="product-card">
+  <img src="product.jpg" alt="Product" />
+  <h3>Sản phẩm 1</h3>
+  <p>Giá: 250.000đ</p>
+  <button>Mua ngay</button>
+</div>
+```
+
+```css
+.header {
+  background-color: #222;
+  color: white;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hamburger {
+  display: block;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+}
+
+.nav-links {
+  display: none;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product-card button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+}
+
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+}
+```
+
+---
+
+### 2. Bootstrap version
+
+```html
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">MyShop</a>
+
+    <button
+      class="navbar-toggler"
+      data-bs-toggle="collapse"
+      data-bs-target="#menu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link active" href="#">Trang chủ</a>
+        <a class="nav-link" href="#">Sản phẩm</a>
+        <a class="nav-link" href="#">Liên hệ</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="card">
+  <img src="product.jpg" class="card-img-top" alt="Product" />
+  <div class="card-body">
+    <h5 class="card-title">Sản phẩm 1</h5>
+    <p class="card-text">Giá: 250.000đ</p>
+    <button class="btn btn-primary">Mua ngay</button>
+  </div>
+</div>
+```
+
+---
+
+### 3. So sánh
+
+#### Số dòng CSS cần viết
+
+- CSS thuần:
+  - Cần tự viết khoảng 40–60 dòng CSS cho navbar, responsive, card, button, image.
+  - Nếu thêm hover, spacing, grid thì số dòng còn tăng thêm.
+
+- Bootstrap:
+  - Hầu như không cần viết CSS riêng.
+  - Chủ yếu dùng class có sẵn như `navbar`, `navbar-expand-lg`, `card`, `btn`, `container`.
+
+Kết luận: Bootstrap giúp giảm rất nhiều số dòng CSS.
+
+---
+
+#### Thời gian phát triển
+
+- CSS thuần:
+  - Tốn thời gian hơn vì phải tự viết layout, responsive, spacing, hover, màu sắc.
+  - Phải test nhiều breakpoint.
+
+- Bootstrap:
+  - Nhanh hơn vì có sẵn component và utilities.
+  - Navbar, card, button, grid đã được thiết kế sẵn.
+
+Kết luận: Bootstrap phù hợp khi cần làm nhanh giao diện chuẩn responsive.
+
+---
+
+#### Khả năng tùy biến
+
+- CSS thuần:
+  - Tùy biến rất cao.
+  - Có thể thiết kế giao diện theo ý muốn hoàn toàn.
+  - Nhưng mất nhiều thời gian và dễ lỗi responsive.
+
+- Bootstrap:
+  - Tùy biến nhanh bằng utility classes.
+  - Có thể đổi theme bằng Sass variables.
+  - Tuy nhiên nếu muốn giao diện quá đặc biệt thì phải override nhiều hoặc custom Bootstrap.
+
+Kết luận: CSS thuần linh hoạt hơn, còn Bootstrap nhanh và ổn định hơn.
+
+---
+
+### 4. Khi nào NÊN dùng Bootstrap?
+
+Nên dùng Bootstrap khi:
+
+- Cần làm website nhanh.
+- Làm dashboard, landing page, admin panel.
+- Cần responsive sẵn.
+- Dự án không yêu cầu thiết kế quá độc đáo.
+- Team muốn dùng chung một hệ thống component.
+
+Ví dụ:
+
+- Trang quản trị admin.
+- Landing page bán hàng.
+- Website giới thiệu công ty.
+- Prototype/demo nhanh.
+
+---
+
+### 5. Khi nào KHÔNG NÊN dùng Bootstrap?
+
+Không nên dùng Bootstrap khi:
+
+- Dự án cần giao diện rất riêng, không muốn giống Bootstrap.
+- Muốn kiểm soát CSS chi tiết 100%.
+- Website cần tối ưu dung lượng CSS cực nhỏ.
+- Team dùng design system riêng.
+- Dự án đã dùng framework khác như TailwindCSS.
+
+Kết luận: Bootstrap rất tốt để phát triển nhanh, nhưng CSS thuần hoặc framework khác sẽ phù hợp hơn khi cần tùy biến giao diện sâu.
