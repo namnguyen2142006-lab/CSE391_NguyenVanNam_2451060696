@@ -311,3 +311,212 @@ Hoặc dùng VS Code extension:
 - Live Sass Compiler
 - Click "Watch Sass"
 - Tự động tạo file `style.css`
+
+## Câu C1 — Phân tích trang web thực: YouTube
+
+Em chọn website YouTube để phân tích responsive layout trên 3 kích thước màn hình: mobile, tablet và desktop.
+
+### 1. Mobile — 375px
+
+Ở kích thước mobile, giao diện YouTube được tối giản. Navigation chính được thu gọn, các thành phần như sidebar lớn bên trái không hiển thị đầy đủ. Nội dung video hiển thị theo dạng 1 cột, mỗi video chiếm gần hết chiều rộng màn hình.
+
+- Navigation: được rút gọn, ưu tiên icon và thanh tìm kiếm đơn giản.
+- Lưới content: 1 cột.
+- Elements bị ẩn: sidebar lớn, một số menu phụ, text dài.
+- Font size: nhỏ hơn desktop để phù hợp màn hình điện thoại.
+
+### 2. Tablet — 768px
+
+Ở kích thước tablet, giao diện rộng hơn mobile nên có nhiều không gian hơn. Một số thành phần navigation bắt đầu hiển thị rõ hơn. Lưới video có thể chuyển sang 2 cột tùy nội dung và khu vực hiển thị.
+
+- Navigation: hiển thị nhiều icon hơn mobile.
+- Lưới content: khoảng 2 cột.
+- Elements bị ẩn: sidebar đầy đủ vẫn có thể bị thu gọn.
+- Font size: lớn hơn mobile một chút.
+
+### 3. Desktop — 1440px
+
+Ở kích thước desktop, YouTube hiển thị đầy đủ layout hơn. Sidebar bên trái có thể xuất hiện, thanh tìm kiếm nằm rõ ở header, danh sách video hiển thị nhiều cột.
+
+- Navigation: hiển thị đầy đủ hơn, có sidebar và thanh tìm kiếm lớn.
+- Lưới content: khoảng 3–4 cột.
+- Elements bị ẩn trên mobile nhưng hiện ở desktop: sidebar, nhiều menu điều hướng, text mô tả dài hơn.
+- Font size: dễ đọc hơn và khoảng cách giữa các phần tử rộng hơn.
+
+## Câu C2 — Thiết kế Responsive Strategy: Trang đặt bàn nhà hàng
+
+### 1. Mobile `< 768px`
+
+Wireframe mobile:
+
+```txt
+┌────────────────────────┐
+│ HEADER                 │
+│ Logo + nút gọi điện    │
+├────────────────────────┤
+│ HERO IMAGE             │
+├────────────────────────┤
+│ FORM ĐẶT BÀN           │
+│ Ngày                   │
+│ Giờ                    │
+│ Số người               │
+│ Ghi chú                │
+├────────────────────────┤
+│ GRID ẢNH MÓN ĂN        │
+│ 1 cột                  │
+├────────────────────────┤
+│ GOOGLE MAPS            │
+├────────────────────────┤
+│ FOOTER                 │
+└────────────────────────┘
+```
+
+Ở mobile, các thành phần phụ như sidebar hoặc menu dài sẽ bị ẩn. Form đặt bàn nên đặt ngay sau hero image để người dùng dễ thao tác. Grid ảnh món ăn hiển thị 1 cột.
+
+---
+
+### 2. Tablet `768px - 1023px`
+
+Wireframe tablet:
+
+```txt
+┌────────────────────────────────┐
+│ HEADER                         │
+│ Logo + số điện thoại đặt bàn   │
+├────────────────────────────────┤
+│ HERO IMAGE                     │
+├────────────────────────────────┤
+│ FORM ĐẶT BÀN                   │
+├───────────────┬────────────────┤
+│ ẢNH MÓN ĂN    │ ẢNH MÓN ĂN     │
+│ 2 cột         │                │
+├────────────────────────────────┤
+│ GOOGLE MAPS                    │
+├────────────────────────────────┤
+│ FOOTER                         │
+└────────────────────────────────┘
+```
+
+Ở tablet, grid ảnh món ăn nên hiển thị 2 cột. Form đặt bàn vẫn nằm phía trên phần ảnh để người dùng dễ thấy. Bản đồ Google Maps nằm dưới grid ảnh và chiếm toàn bộ chiều rộng.
+
+---
+
+### 3. Desktop `≥ 1024px`
+
+Wireframe desktop:
+
+```txt
+┌──────────────────────────────────────────────┐
+│ HEADER: Logo + số điện thoại đặt bàn         │
+├──────────────────────────────────────────────┤
+│ HERO IMAGE FULL WIDTH                        │
+├───────────────────────┬──────────────────────┤
+│ GRID ẢNH MÓN ĂN       │ FORM ĐẶT BÀN         │
+│ 3 cột                 │ Sidebar bên phải     │
+├───────────────────────┴──────────────────────┤
+│ GOOGLE MAPS FULL WIDTH                       │
+├──────────────────────────────────────────────┤
+│ FOOTER                                       │
+└──────────────────────────────────────────────┘
+```
+
+Ở desktop, layout có thể chia thành 2 cột chính: bên trái là grid ảnh món ăn, bên phải là form đặt bàn dạng sidebar. Grid ảnh món ăn hiển thị 3 cột. Bản đồ Google Maps nằm bên dưới và chiếm toàn bộ chiều rộng.
+
+---
+
+## CSS Skeleton Mobile-First
+
+```css
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* MOBILE FIRST */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.hero {
+  width: 100%;
+  min-height: 300px;
+  background-image: url("restaurant-hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.page-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 16px;
+}
+
+.booking-form {
+  display: grid;
+  gap: 12px;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.food-grid img {
+  width: 100%;
+  height: auto;
+}
+
+.map {
+  width: 100%;
+  min-height: 300px;
+}
+
+.footer {
+  padding: 20px;
+  text-align: center;
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  .food-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .map {
+    min-height: 350px;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .page-layout {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+
+  .food-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .booking-form {
+    position: sticky;
+    top: 20px;
+  }
+
+  .map {
+    grid-column: 1 / -1;
+    min-height: 400px;
+  }
+}
+```
