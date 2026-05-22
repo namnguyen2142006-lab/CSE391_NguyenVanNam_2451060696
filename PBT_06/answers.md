@@ -242,3 +242,79 @@ Phù hợp khi muốn:
 
 - mobile full width
 - desktop có giới hạn chiều rộng.
+
+## Câu C1 — Tùy biến Bootstrap
+
+### 1. Đổi màu `$primary` từ xanh mặc định sang `#E63946`
+
+Bootstrap được xây dựng bằng Sass/SCSS, nên để đổi màu chủ đạo đúng cách, ta nên sửa biến Sass của Bootstrap trước khi compile.
+
+Quy trình:
+
+- Cài Bootstrap bằng npm:
+
+```bash
+npm install bootstrap
+```
+
+- Tạo file SCSS riêng, ví dụ:
+
+```txt
+scss/custom-bootstrap.scss
+```
+
+- Trong file `custom-bootstrap.scss`, khai báo lại biến `$primary` trước khi import Bootstrap:
+
+```scss
+$primary: #e63946;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+```
+
+- Compile SCSS thành CSS:
+
+```bash
+sass scss/custom-bootstrap.scss css/custom-bootstrap.css
+```
+
+- Link file CSS đã compile vào HTML:
+
+```html
+<link rel="stylesheet" href="css/custom-bootstrap.css" />
+```
+
+Kết quả: các class Bootstrap dùng màu primary như `.btn-primary`, `.bg-primary`, `.text-primary`, `.border-primary` sẽ tự đổi sang màu `#E63946`.
+
+---
+
+### 2. Tại sao không nên override trực tiếp `.btn-primary { background: red; }`?
+
+Không nên viết:
+
+```css
+.btn-primary {
+  background: red;
+}
+```
+
+vì cách này chỉ sửa riêng `.btn-primary`, không sửa toàn bộ hệ thống màu của Bootstrap.
+
+Nhược điểm:
+
+- Không đồng bộ với các class khác như `.bg-primary`, `.text-primary`, `.border-primary`.
+- Dễ bị thiếu style như `border-color`, `hover`, `active`, `focus`.
+- Code override dễ rối và khó bảo trì.
+- Khi Bootstrap update, CSS tự override có thể bị lỗi hoặc không còn phù hợp.
+- Không tận dụng được hệ thống theme Sass của Bootstrap.
+
+Dùng Sass variables tốt hơn vì chỉ cần đổi một biến `$primary`, Bootstrap sẽ tự tạo lại toàn bộ các class liên quan đến màu primary một cách đồng bộ.
+
+Ví dụ:
+
+```scss
+$primary: #e63946;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+```
+
+Cách này giúp giao diện nhất quán, dễ maintain và chuyên nghiệp hơn.
