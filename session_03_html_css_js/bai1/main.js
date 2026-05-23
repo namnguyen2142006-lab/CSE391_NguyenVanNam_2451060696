@@ -14,6 +14,15 @@ const averageScore = document.getElementById("averageScore");
 const message = document.getElementById("message");
 
 const formTitle = document.getElementById("formTitle");
+
+// Mảng lưu danh sách sinh viên
+let students = JSON.parse(localStorage.getItem("students")) || [];
+
+// editIndex = -1 nghĩa là đang thêm mới
+// editIndex khác -1 nghĩa là đang sửa sinh viên
+let editIndex = -1;
+
+// Mở form thêm sinh viên
 btnOpenForm.addEventListener("click", function () {
   studentForm.reset();
 
@@ -23,6 +32,8 @@ btnOpenForm.addEventListener("click", function () {
 
   modal.classList.remove("hidden");
 });
+
+// Đóng form
 btnCloseForm.addEventListener("click", function () {
   modal.classList.add("hidden");
 
@@ -32,59 +43,52 @@ btnCloseForm.addEventListener("click", function () {
 
   formTitle.innerText = "Thêm sinh viên";
 });
-let students = JSON.parse(localStorage.getItem("students")) || [];
-let editIndex = -1;
+
+// Hiển thị danh sách sinh viên ra bảng
 function renderStudents() {
   studentTableBody.innerHTML = "";
 
+  if (students.length === 0) {
+    studentTableBody.innerHTML = `
+      <tr>
+        <td colspan="7">Chưa có sinh viên nào</td>
+      </tr>
+    `;
+    return;
+  }
+
   students.forEach(function (student, index) {
     studentTableBody.innerHTML += `
-
       <tr>
-
         <td>${student.studentId}</td>
-
         <td>${student.fullName}</td>
-
         <td>${student.birthday}</td>
-
         <td>${student.className}</td>
-
         <td>${student.score}</td>
-
         <td>${student.email}</td>
-
         <td>
-
-          <button class = "btn btn-edit" onclick="editStudent(${index})" >
-  Sửa
-</button>
+          <button class="btn btn-edit" onclick="editStudent(${index})">
+            Sửa
+          </button>
 
           <button class="btn btn-delete" onclick="deleteStudent(${index})">
             Xóa
           </button>
-
         </td>
-
       </tr>
-
     `;
   });
 }
+
 studentForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const student = {
     studentId: document.getElementById("studentId").value,
-
     fullName: document.getElementById("fullName").value,
-
     birthday: document.getElementById("birthday").value,
-
     className: document.getElementById("className").value,
-
     score: document.getElementById("score").value,
-
     email: document.getElementById("email").value,
   };
 
@@ -96,20 +100,24 @@ studentForm.addEventListener("submit", function (event) {
     showMessage("Cập nhật sinh viên thành công");
     editIndex = -1;
   }
-  saveStudents();
-  renderStudents();
-  updateStatistics();
 
-  showMessage("Thêm sinh viên thành công");
+  saveStudents();
+
+  renderStudents();
+
+  updateStatistics();
 
   studentForm.reset();
 
   modal.classList.add("hidden");
+
+  formTitle.innerText = "Thêm sinh viên";
 });
+
 function saveStudents() {
   localStorage.setItem("students", JSON.stringify(students));
 }
-renderStudents();
+
 function updateStatistics() {
   totalStudents.innerText = students.length;
 
@@ -128,6 +136,7 @@ function updateStatistics() {
 
   averageScore.innerText = avg.toFixed(2);
 }
+
 function showMessage(text) {
   message.innerText = text;
 
@@ -135,6 +144,7 @@ function showMessage(text) {
     message.innerText = "";
   }, 2000);
 }
+
 function deleteStudent(index) {
   const confirmDelete = confirm("Bạn có chắc muốn xóa sinh viên này không?");
 
@@ -150,6 +160,7 @@ function deleteStudent(index) {
     showMessage("Xóa sinh viên thành công");
   }
 }
+
 function editStudent(index) {
   const student = students[index];
 
@@ -171,3 +182,6 @@ function editStudent(index) {
 
   modal.classList.remove("hidden");
 }
+
+renderStudents();
+updateStatistics();

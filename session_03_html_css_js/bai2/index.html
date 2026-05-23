@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý công việc cá nhân</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1>Quản lý công việc cá nhân</h1>
+
+    <button id="btnOpenForm">Thêm công việc</button>
+
+    <div id="message"></div>
+
+    <div class="statistics">
+      <p>Tổng số công việc: <span id="totalTasks">0</span></p>
+      <p>Đã hoàn thành: <span id="completedTasks">0</span></p>
+      <p>Chưa hoàn thành: <span id="incompleteTasks">0</span></p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Tiêu đề</th>
+          <th>Mô tả</th>
+          <th>Hạn hoàn thành</th>
+          <th>Ưu tiên</th>
+          <th>Trạng thái</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+
+      <tbody id="fixedTaskTableBody"></tbody>
+
+      <tbody id="taskTableBody"></tbody>
+    </table>
+
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <h2 id="formTitle">Thêm công việc</h2>
+
+        <form id="taskForm">
+          <input
+            type="text"
+            id="taskTitle"
+            placeholder="Tiêu đề công việc"
+            required
+          />
+
+          <textarea
+            id="taskDescription"
+            placeholder="Mô tả ngắn"
+            required
+          ></textarea>
+
+          <input type="date" id="taskDeadline" required />
+
+          <select id="taskPriority" required>
+            <option value="">-- Chọn mức ưu tiên --</option>
+            <option value="Thấp">Thấp</option>
+            <option value="Trung bình">Trung bình</option>
+            <option value="Cao">Cao</option>
+          </select>
+
+          <label class="checkbox-row">
+            <input type="checkbox" id="taskCompleted" />
+            Đã hoàn thành
+          </label>
+
+          <button type="submit">Lưu</button>
+          <button type="button" id="btnCloseForm">Hủy</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
