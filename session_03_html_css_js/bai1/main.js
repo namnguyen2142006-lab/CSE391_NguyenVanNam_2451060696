@@ -16,7 +16,54 @@ const message = document.getElementById("message");
 const formTitle = document.getElementById("formTitle");
 
 // Mảng lưu danh sách sinh viên
-let students = JSON.parse(localStorage.getItem("students")) || [];
+let students = JSON.parse(localStorage.getItem("students"));
+
+if (students === null || students.length === 0) {
+  students = [
+    {
+      studentId: "SV001",
+      fullName: "Nguyễn Văn A",
+      birthday: "2005-01-01",
+      className: "K66A",
+      score: "8.5",
+      email: "a@gmail.com",
+    },
+    {
+      studentId: "SV002",
+      fullName: "Trần Thị B",
+      birthday: "2005-03-12",
+      className: "K66B",
+      score: "7.8",
+      email: "b@gmail.com",
+    },
+    {
+      studentId: "SV003",
+      fullName: "Lê Văn C",
+      birthday: "2005-07-20",
+      className: "K66C",
+      score: "9.2",
+      email: "c@gmail.com",
+    },
+    {
+      studentId: "SV004",
+      fullName: "Phạm Thị D",
+      birthday: "2005-09-10",
+      className: "K66A",
+      score: "6.9",
+      email: "d@gmail.com",
+    },
+    {
+      studentId: "SV005",
+      fullName: "Hoàng Văn E",
+      birthday: "2005-11-25",
+      className: "K66B",
+      score: "8.0",
+      email: "e@gmail.com",
+    },
+  ];
+
+  localStorage.setItem("students", JSON.stringify(students));
+}
 
 // editIndex = -1 nghĩa là đang thêm mới
 // editIndex khác -1 nghĩa là đang sửa sinh viên
@@ -47,15 +94,6 @@ btnCloseForm.addEventListener("click", function () {
 // Hiển thị danh sách sinh viên ra bảng
 function renderStudents() {
   studentTableBody.innerHTML = "";
-
-  if (students.length === 0) {
-    studentTableBody.innerHTML = `
-      <tr>
-        <td colspan="7">Chưa có sinh viên nào</td>
-      </tr>
-    `;
-    return;
-  }
 
   students.forEach(function (student, index) {
     studentTableBody.innerHTML += `

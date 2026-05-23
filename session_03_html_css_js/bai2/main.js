@@ -13,7 +13,53 @@ const totalTasks = document.getElementById("totalTasks");
 const completedTasks = document.getElementById("completedTasks");
 const incompleteTasks = document.getElementById("incompleteTasks");
 
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+// Mảng lưu danh sách công việc
+let tasks = JSON.parse(localStorage.getItem("tasks"));
+
+if (tasks === null || tasks.length === 0) {
+  tasks = [
+    {
+      title: "Học HTML",
+      description: "Ôn lại các thẻ cơ bản",
+      deadline: "2026-05-25",
+      priority: "Cao",
+      completed: false,
+    },
+    {
+      title: "Làm bài CSS",
+      description: "Trang trí giao diện",
+      deadline: "2026-05-26",
+      priority: "Trung bình",
+      completed: true,
+    },
+    {
+      title: "Ôn JavaScript DOM",
+      description: "Luyện lấy phần tử HTML",
+      deadline: "2026-05-27",
+      priority: "Cao",
+      completed: false,
+    },
+    {
+      title: "Làm bài tập Web",
+      description: "Hoàn thành bài quản lý công việc",
+      deadline: "2026-05-28",
+      priority: "Cao",
+      completed: false,
+    },
+    {
+      title: "Nộp bài",
+      description: "Kiểm tra lại code trước khi nộp",
+      deadline: "2026-05-29",
+      priority: "Thấp",
+      completed: true,
+    },
+  ];
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+// editIndex = -1 nghĩa là đang thêm mới
+// editIndex khác -1 nghĩa là đang sửa công việc
 let editIndex = -1;
 
 btnOpenForm.addEventListener("click", function () {
@@ -142,25 +188,18 @@ function editTask(index) {
 }
 
 function updateTaskSummary() {
-  let fixedTotal = 5;
+  totalTasks.innerText = tasks.length;
 
-  let fixedCompleted = 2;
-
-  let jsCompleted = 0;
+  let completedCount = 0;
 
   tasks.forEach(function (task) {
     if (task.completed === true) {
-      jsCompleted++;
+      completedCount++;
     }
   });
 
-  let total = fixedTotal + tasks.length;
-  let completed = fixedCompleted + jsCompleted;
-  let incomplete = total - completed;
-
-  totalTasks.innerText = total;
-  completedTasks.innerText = completed;
-  incompleteTasks.innerText = incomplete;
+  completedTasks.innerText = completedCount;
+  incompleteTasks.innerText = tasks.length - completedCount;
 }
 
 function showMessage(text) {
