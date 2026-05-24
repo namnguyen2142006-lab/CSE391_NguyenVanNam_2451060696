@@ -185,3 +185,366 @@ Sau khi chạy file, kết quả thực tế giống với dự đoán:
 ### `const` array vẫn push được
 
 `const` chỉ ngăn việc gán lại biến, không ngăn việc thay đổi nội dung bên trong object hoặc array.
+
+## Câu A2 — Data Types & Coercion
+
+### 1. Dự đoán kết quả trước khi chạy
+
+```javascript
+console.log(typeof null); // "object"
+console.log(typeof undefined); // "undefined"
+console.log(typeof NaN); // "number"
+console.log("5" + 3); // "53"
+console.log("5" - 3); // 2
+console.log("5" * "3"); // 15
+console.log(true + true); // 2
+console.log([] + []); // ""
+console.log([] + {}); // "[object Object]"
+console.log({} + []); // 0 hoặc "[object Object]" tùy môi trường chạy
+```
+
+---
+
+### 2. Giải thích từng kết quả
+
+#### `typeof null`
+
+```javascript
+console.log(typeof null);
+```
+
+Kết quả dự đoán:
+
+```txt
+"object"
+```
+
+Giải thích:
+
+Đây là lỗi lịch sử của JavaScript. `null` không thực sự là object, nhưng `typeof null` lại trả về `"object"`.
+
+---
+
+#### `typeof undefined`
+
+```javascript
+console.log(typeof undefined);
+```
+
+Kết quả dự đoán:
+
+```txt
+"undefined"
+```
+
+Giải thích:
+
+`undefined` là kiểu dữ liệu thể hiện biến chưa có giá trị.
+
+---
+
+#### `typeof NaN`
+
+```javascript
+console.log(typeof NaN);
+```
+
+Kết quả dự đoán:
+
+```txt
+"number"
+```
+
+Giải thích:
+
+`NaN` là viết tắt của `Not a Number`, nhưng trong JavaScript nó vẫn thuộc kiểu `number`.
+
+---
+
+#### `"5" + 3`
+
+```javascript
+console.log("5" + 3);
+```
+
+Kết quả dự đoán:
+
+```txt
+"53"
+```
+
+Giải thích:
+
+Toán tử `+` trong JavaScript có thể dùng để cộng số hoặc nối chuỗi.
+
+Khi một bên là string, JavaScript ưu tiên nối chuỗi.
+
+```javascript
+"5" + 3;
+```
+
+JavaScript tự chuyển:
+
+```javascript
+3 → "3"
+```
+
+nên thành:
+
+```javascript
+"5" + "3";
+```
+
+Kết quả là:
+
+```txt
+"53"
+```
+
+---
+
+#### `"5" - 3`
+
+```javascript
+console.log("5" - 3);
+```
+
+Kết quả dự đoán:
+
+```txt
+2
+```
+
+Giải thích:
+
+Toán tử `-` không dùng để nối chuỗi. Nó chỉ dùng cho phép toán số.
+
+Vì vậy JavaScript tự chuyển:
+
+```javascript
+"5" → 5
+```
+
+rồi tính:
+
+```javascript
+5 - 3;
+```
+
+Kết quả là:
+
+```txt
+2
+```
+
+---
+
+#### `"5" * "3"`
+
+```javascript
+console.log("5" * "3");
+```
+
+Kết quả dự đoán:
+
+```txt
+15
+```
+
+Giải thích:
+
+Toán tử `*` cũng là toán tử số học, nên JavaScript tự chuyển hai chuỗi `"5"` và `"3"` thành số.
+
+```javascript
+"5" * "3";
+```
+
+thành:
+
+```javascript
+5 * 3;
+```
+
+Kết quả là:
+
+```txt
+15
+```
+
+---
+
+#### `true + true`
+
+```javascript
+console.log(true + true);
+```
+
+Kết quả dự đoán:
+
+```txt
+2
+```
+
+Giải thích:
+
+Khi tính toán số học:
+
+```javascript
+true → 1
+false → 0
+```
+
+nên:
+
+```javascript
+true + true;
+```
+
+thành:
+
+```javascript
+1 + 1;
+```
+
+Kết quả là:
+
+```txt
+2
+```
+
+---
+
+#### `[] + []`
+
+```javascript
+console.log([] + []);
+```
+
+Kết quả dự đoán:
+
+```txt
+""
+```
+
+Giải thích:
+
+Mảng rỗng khi chuyển sang chuỗi sẽ thành chuỗi rỗng:
+
+```javascript
+[] → ""
+```
+
+nên:
+
+```javascript
+[] + [];
+```
+
+thành:
+
+```javascript
+"" + "";
+```
+
+Kết quả là chuỗi rỗng.
+
+---
+
+#### `[] + {}`
+
+```javascript
+console.log([] + {});
+```
+
+Kết quả dự đoán:
+
+```txt
+"[object Object]"
+```
+
+Giải thích:
+
+JavaScript chuyển:
+
+```javascript
+[] → ""
+{} → "[object Object]"
+```
+
+nên:
+
+```javascript
+[] + {};
+```
+
+thành:
+
+```javascript
+"" + "[object Object]";
+```
+
+Kết quả là:
+
+```txt
+"[object Object]"
+```
+
+---
+
+#### `{} + []`
+
+```javascript
+console.log({} + []);
+```
+
+Kết quả dự đoán:
+
+```txt
+"[object Object]"
+```
+
+Giải thích:
+
+Đây là trường hợp dễ gây nhầm.
+
+Trong một số môi trường, `{}` có thể bị hiểu là một block code rỗng, sau đó `+[]` được hiểu là ép mảng rỗng sang số.
+
+```javascript
++[];
+```
+JavaScript hiểu `{}` là object literal trong biểu thức, kết quả có thể là:
+
+```txt
+"[object Object]"
+```
+
+---
+
+## 3. So sánh sau khi chạy code
+
+Sau khi chạy file `type_coercion.js`, phần lớn kết quả giống với dự đoán.
+
+Kết quả cần chú ý nhất là:
+
+- `"5" + 3` ra `"53"` vì toán tử `+` ưu tiên nối chuỗi khi có string.
+- `"5" - 3` ra `2` vì toán tử `-` chỉ dùng cho phép toán số nên JavaScript ép `"5"` thành số `5`.
+
+---
+
+## 4. Bài học rút ra
+
+Type coercion là việc JavaScript tự động chuyển kiểu dữ liệu.
+
+Điều này có thể gây bug nếu lập trình viên không kiểm soát kiểu dữ liệu.
+
+Cách an toàn hơn là chuyển kiểu rõ ràng trước khi tính toán:
+
+```javascript
+Number("5") + 3;
+```
+
+Kết quả:
+
+```txt
+8
+```
