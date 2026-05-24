@@ -579,4 +579,4 @@ Lý do:
 - Code dễ hiểu hơn.
 - An toàn hơn khi kiểm tra điều kiện.
 
-Chỉ nên dùng `==` khi thật sự hiểu rõ JavaScript sẽ ép kiểu như thế nào.
+Chỉ nên dùng `==` khi thật sự hiểu rõ JavaScript sẽ ép kiểu như thế nào..
