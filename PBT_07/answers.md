@@ -580,3 +580,68 @@ Lý do:
 - An toàn hơn khi kiểm tra điều kiện.
 
 Chỉ nên dùng `==` khi thật sự hiểu rõ JavaScript sẽ ép kiểu như thế nào..
+
+## Câu A5 — Template Literals
+
+### Cách 1
+
+Code ban đầu:
+
+```javascript
+var greeting = "Xin chào " + name + "! Bạn " + age + " tuổi.";
+```
+
+Viết bằng template literal:
+
+```javascript
+var greeting = `Xin chào ${name}! Bạn ${age} tuổi.`;
+```
+
+---
+
+### Cách 2
+
+Code ban đầu:
+
+```javascript
+var url = "https://api.example.com/users/" + userId + "/orders?page=" + page;
+```
+
+Viết bằng template literal:
+
+```javascript
+var url = `https://api.example.com/users/${userId}/orders?page=${page}`;
+```
+
+---
+
+### Cách 3
+
+Code ban đầu:
+
+```javascript
+var html =
+  '<div class="card">' +
+  "<h2>" +
+  title +
+  "</h2>" +
+  "<p>" +
+  description +
+  "</p>" +
+  "<span>Giá: " +
+  price +
+  "đ</span>" +
+  "</div>";
+```
+
+Viết bằng template literal:
+
+```javascript
+var html = `
+<div class="card">
+    <h2>${title}</h2>
+    <p>${description}</p>
+    <span>Giá: ${price}đ</span>
+</div>
+`;
+```
