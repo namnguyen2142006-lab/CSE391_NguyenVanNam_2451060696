@@ -512,6 +512,7 @@ Trong một số môi trường, `{}` có thể bị hiểu là một block code
 ```javascript
 +[];
 ```
+
 JavaScript hiểu `{}` là object literal trong biểu thức, kết quả có thể là:
 
 ```txt
@@ -548,3 +549,34 @@ Kết quả:
 ```txt
 8
 ```
+
+## Câu A3 — So sánh `==` và `===`
+
+```javascript
+console.log(5 == "5"); // true
+console.log(5 === "5"); // false
+console.log(null == undefined); // true
+console.log(null === undefined); // false
+console.log(NaN == NaN); // false
+console.log(0 == false); // true
+console.log(0 === false); // false
+console.log("" == false); // true
+```
+
+### Giải thích ngắn
+
+- `==` là so sánh lỏng, JavaScript có thể tự ép kiểu trước khi so sánh.
+- `===` là so sánh nghiêm ngặt, kiểm tra cả giá trị và kiểu dữ liệu.
+- `NaN == NaN` là `false` vì `NaN` không bằng bất kỳ giá trị nào, kể cả chính nó.
+
+### Nên dùng `==` hay `===`?
+
+Từ giờ trở đi nên dùng `===`.
+
+Lý do:
+
+- Tránh JavaScript tự ép kiểu gây kết quả bất ngờ.
+- Code dễ hiểu hơn.
+- An toàn hơn khi kiểm tra điều kiện.
+
+Chỉ nên dùng `==` khi thật sự hiểu rõ JavaScript sẽ ép kiểu như thế nào.
