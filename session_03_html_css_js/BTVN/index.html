@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý sinh viên</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Quản lý sinh viên</h1>
+
+    <button id="btnOpenForm">Thêm sinh viên</button>
+
+    <div id="message"></div>
+
+    <div class="statistics">
+      <p>Tổng số sinh viên: <span id="totalStudents">0</span></p>
+      <p>Điểm trung bình lớp: <span id="averageScore">0</span></p>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Mã SV</th>
+          <th>Họ và tên</th>
+          <th>Ngày sinh</th>
+          <th>Lớp học</th>
+          <th>Điểm TB</th>
+          <th>Email</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="studentTableBody"></tbody>
+    </table>
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <h2 id="formTitle">Thêm sinh viên</h2>
+
+        <form id="studentForm">
+          <input type="text" id="studentId" placeholder="Mã sinh viên" />
+          <small id="studentIdError" class="error"></small>
+
+          <input type="text" id="fullName" placeholder="Họ và tên" />
+          <small id="fullNameError" class="error"></small>
+
+          <input type="date" id="birthday" />
+          <small id="birthdayError" class="error"></small>
+
+          <input type="text" id="className" placeholder="Lớp học" />
+          <small id="classNameError" class="error"></small>
+
+          <input type="number" id="score" placeholder="Điểm trung bình" />
+          <small id="scoreError" class="error"></small>
+
+          <input type="email" id="email" placeholder="Email" />
+          <small id="emailError" class="error"></small>
+
+          <button type="submit">Lưu</button>
+
+          <button type="button" id="btnCloseForm">Hủy</button>
+        </form>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
