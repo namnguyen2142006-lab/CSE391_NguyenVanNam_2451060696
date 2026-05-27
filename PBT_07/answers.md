@@ -645,3 +645,230 @@ var html = `
 </div>
 `;
 ```
+
+## Câu C1 — Debug JavaScript
+
+### 1. Các lỗi trong code ban đầu
+
+#### Lỗi 1: Không kiểm tra `giaBan` có phải số không
+
+Code ban đầu:
+
+```javascript
+const gia = tinhGiaGiamGia("100000", 20);
+```
+
+Ở đây `"100000"` là string, không phải number. JavaScript có thể tự ép kiểu để tính toán, nhưng cách này dễ gây bug.
+
+Cách sửa:
+
+```javascript
+if (typeof giaBan !== "number") {
+  return "Giá bán phải là số";
+}
+```
+
+Hoặc chuyển chuỗi sang số nếu muốn cho phép input dạng string:
+
+```javascript
+giaBan = Number(giaBan);
+```
+
+---
+
+#### Lỗi 2: Không kiểm tra `phanTramGiam` có phải số không
+
+Nếu `phanTramGiam` là chữ hoặc giá trị không hợp lệ thì phép tính sẽ sai.
+
+Cách sửa:
+
+```javascript
+if (typeof phanTramGiam !== "number") {
+  return "Phần trăm giảm phải là số";
+}
+```
+
+---
+
+#### Lỗi 3: Thiếu dấu `;`
+
+Code ban đầu thiếu dấu `;` ở nhiều dòng:
+
+```javascript
+return "Phần trăm giảm không hợp lệ";
+var giamGia = (giaBan * phanTramGiam) / 100;
+let giaSauGiam = giaBan - giamGia;
+return giaSauGiam;
+```
+
+JavaScript vẫn có thể chạy do cơ chế tự thêm dấu chấm phẩy, nhưng nên viết rõ để code dễ đọc và tránh lỗi.
+
+Cách sửa:
+
+```javascript
+return "Phần trăm giảm không hợp lệ";
+```
+
+---
+
+#### Lỗi 4: Dùng `=` thay vì `===` trong điều kiện `if`
+
+Code sai:
+
+```javascript
+if ((giaSauGiam = 0)) {
+  console.log("Sản phẩm miễn phí!");
+}
+```
+
+Dấu `=` là gán giá trị, không phải so sánh. Dòng này gán `giaSauGiam` bằng `0`, làm sai kết quả.
+
+Cách sửa:
+
+```javascript
+if (giaSauGiam === 0) {
+  console.log("Sản phẩm miễn phí!");
+}
+```
+
+---
+
+#### Lỗi 5: Nên dùng `let` hoặc `const` thay cho `var`
+
+Code ban đầu:
+
+```javascript
+var giamGia = (giaBan * phanTramGiam) / 100;
+```
+
+`var` có function scope và dễ gây lỗi hoisting. Trong code hiện đại nên dùng `const` nếu giá trị không gán lại.
+
+Cách sửa:
+
+```javascript
+const giamGia = (giaBan * phanTramGiam) / 100;
+```
+
+---
+
+#### Lỗi 6: Vòng lặp dùng `var i` với `setTimeout`
+
+Code ban đầu:
+
+```javascript
+for (var i = 0; i < 5; i++) {
+  setTimeout(function () {
+    console.log("Item " + i);
+  }, 1000);
+}
+```
+
+Do `var` có function scope, tất cả callback trong `setTimeout` dùng chung một biến `i`. Khi `setTimeout` chạy sau 1 giây, vòng lặp đã kết thúc và `i` đã bằng `5`.
+
+Kết quả sẽ in:
+
+```txt
+Item 5
+Item 5
+Item 5
+Item 5
+Item 5
+```
+
+Cách sửa là dùng `let`:
+
+```javascript
+for (let i = 0; i < 5; i++) {
+  setTimeout(function () {
+    console.log("Item " + i);
+  }, 1000);
+}
+```
+
+Vì `let` có block scope, mỗi vòng lặp sẽ có một biến `i` riêng.
+
+---
+
+#### Lỗi 7: Nên kiểm tra giá bán không âm
+
+Nếu `giaBan < 0` thì không hợp lý trong bài toán tính giá bán.
+
+Cách sửa:
+
+```javascript
+if (giaBan < 0) {
+  return "Giá bán không hợp lệ";
+}
+```
+
+---
+
+### 2. Code đã sửa
+
+```javascript
+function tinhGiaGiamGia(giaBan, phanTramGiam) {
+  if (typeof giaBan !== "number" || typeof phanTramGiam !== "number") {
+    return "Input phải là số";
+  }
+
+  if (giaBan < 0) {
+    return "Giá bán không hợp lệ";
+  }
+
+  if (phanTramGiam < 0 || phanTramGiam > 100) {
+    return "Phần trăm giảm không hợp lệ";
+  }
+
+  const giamGia = (giaBan * phanTramGiam) / 100;
+  const giaSauGiam = giaBan - giamGia;
+
+  if (giaSauGiam === 0) {
+    console.log("Sản phẩm miễn phí!");
+  }
+
+  return giaSauGiam;
+}
+
+// Test
+const gia = tinhGiaGiamGia(100000, 20);
+console.log("Giá sau giảm: " + gia + "đ");
+
+const gia2 = tinhGiaGiamGia(50000, 110);
+console.log("Giá: " + gia2);
+
+for (let i = 0; i < 5; i++) {
+  setTimeout(function () {
+    console.log("Item " + i);
+  }, 1000);
+}
+```
+
+---
+
+### 3. Kết luận
+
+Các lỗi chính trong đoạn code là:
+
+- Không kiểm tra kiểu dữ liệu input.
+- Dùng string `"100000"` thay vì number `100000`.
+- Dùng `=` thay vì `===` trong điều kiện.
+- Dùng `var` trong vòng lặp có `setTimeout`.
+- Thiếu dấu `;`.
+- Chưa kiểm tra giá bán âm.
+- Nên dùng `const`/`let` thay cho `var`.
+
+Lỗi quan trọng nhất là:
+
+```javascript
+if (giaSauGiam = 0)
+```
+
+vì đây là phép gán, làm thay đổi giá trị của `giaSauGiam`.
+
+Lỗi ẩn là:
+
+```javascript
+for (var i = 0; i < 5; i++)
+```
+
+vì `var` không có block scope, khiến `setTimeout` in ra sai giá trị `i`. Nên sửa thành `let`.
