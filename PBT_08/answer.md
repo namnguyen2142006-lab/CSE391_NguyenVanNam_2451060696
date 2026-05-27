@@ -294,3 +294,324 @@ let: 2
 ```
 
 ---
+
+## Câu A3 — Array Methods
+
+Cho mảng:
+
+```javascript
+const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+```
+
+### 1. Lấy các số chẵn
+
+```javascript
+const evenNums = nums.filter((num) => num % 2 === 0);
+```
+
+Kết quả:
+
+```javascript
+[2, 4, 6, 8, 10];
+```
+
+---
+
+### 2. Nhân mỗi số với 3
+
+```javascript
+const multiplied = nums.map((num) => num * 3);
+```
+
+Kết quả:
+
+```javascript
+[3, 6, 9, 12, 15, 18, 21, 24, 27, 30];
+```
+
+---
+
+### 3. Tính tổng tất cả
+
+```javascript
+const total = nums.reduce((sum, num) => sum + num, 0);
+```
+
+Kết quả:
+
+```javascript
+55;
+```
+
+---
+
+### 4. Tìm số đầu tiên lớn hơn 7
+
+```javascript
+const firstGreaterThan7 = nums.find((num) => num > 7);
+```
+
+Kết quả:
+
+```javascript
+8;
+```
+
+---
+
+### 5. Kiểm tra có số lớn hơn 10 không
+
+```javascript
+const hasGreaterThan10 = nums.some((num) => num > 10);
+```
+
+Kết quả:
+
+```javascript
+false;
+```
+
+---
+
+### 6. Kiểm tra tất cả đều lớn hơn 0
+
+```javascript
+const allGreaterThan0 = nums.every((num) => num > 0);
+```
+
+Kết quả:
+
+```javascript
+true;
+```
+
+---
+
+### 7. Tạo mảng `"Số X là [chẵn/lẻ]"`
+
+```javascript
+const evenOddText = nums.map(
+  (num) => `Số ${num} là ${num % 2 === 0 ? "chẵn" : "lẻ"}`,
+);
+```
+
+Kết quả:
+
+```javascript
+[
+  "Số 1 là lẻ",
+  "Số 2 là chẵn",
+  "Số 3 là lẻ",
+  "Số 4 là chẵn",
+  "Số 5 là lẻ",
+  "Số 6 là chẵn",
+  "Số 7 là lẻ",
+  "Số 8 là chẵn",
+  "Số 9 là lẻ",
+  "Số 10 là chẵn",
+];
+```
+
+---
+
+### 8. Đảo ngược mảng nhưng không thay đổi mảng gốc
+
+```javascript
+const reversedNums = [...nums].reverse();
+```
+
+Kết quả:
+
+```javascript
+[10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+```
+
+Giải thích:
+
+```javascript
+[...nums];
+```
+
+dùng để copy mảng mới. Sau đó mới gọi `.reverse()`, nên mảng gốc `nums` không bị thay đổi.
+
+## Câu A4 — Object Destructuring & Spread
+
+### Code đề bài
+
+```javascript
+const product = {
+  name: "iPhone 16",
+  price: 25990000,
+  specs: { ram: 8, storage: 256, color: "Titan" },
+};
+```
+
+---
+
+## 1. Destructuring
+
+```javascript
+const {
+  name,
+  price,
+  specs: { ram, color },
+} = product;
+console.log(name, price, ram, color);
+```
+
+Output dự đoán:
+
+```txt
+iPhone 16 25990000 8 Titan
+```
+
+Giải thích:
+
+Dòng destructuring lấy ra:
+
+- `name` từ `product.name`
+- `price` từ `product.price`
+- `ram` từ `product.specs.ram`
+- `color` từ `product.specs.color`
+
+---
+
+```javascript
+console.log(specs);
+```
+
+Output dự đoán:
+
+```txt
+ReferenceError
+```
+
+Giải thích:
+
+Trong đoạn destructuring:
+
+```javascript
+const {
+  name,
+  price,
+  specs: { ram, color },
+} = product;
+```
+
+`specs` chỉ được dùng để truy cập vào object con, chứ không tạo ra biến tên là `specs`.
+
+Vì vậy biến được tạo là:
+
+```javascript
+name;
+price;
+ram;
+color;
+```
+
+Không có biến:
+
+```javascript
+specs;
+```
+
+nên `console.log(specs)` sẽ báo lỗi `ReferenceError`.
+
+---
+
+## 2. Spread
+
+```javascript
+const updated = { ...product, price: 23990000, sale: true };
+console.log(updated.price);
+console.log(updated.sale);
+console.log(product.price);
+```
+
+Output dự đoán:
+
+```txt
+23990000
+true
+25990000
+```
+
+Giải thích:
+
+```javascript
+{ ...product }
+```
+
+copy các thuộc tính của `product` sang object mới.
+
+Sau đó:
+
+```javascript
+price: 23990000;
+```
+
+ghi đè giá trong object mới `updated`.
+
+```javascript
+sale: true;
+```
+
+thêm thuộc tính mới.
+
+Object gốc `product` không bị đổi, nên:
+
+```javascript
+product.price;
+```
+
+vẫn là:
+
+```txt
+25990000
+```
+
+---
+
+## 3. Spread gotcha
+
+```javascript
+const copy = { ...product };
+copy.specs.ram = 16;
+console.log(product.specs.ram);
+```
+
+Output dự đoán:
+
+```txt
+16
+```
+
+Giải thích:
+
+Spread object chỉ copy nông, gọi là **shallow copy**.
+
+Nghĩa là object ngoài được copy, nhưng object con `specs` bên trong vẫn được dùng chung tham chiếu.
+
+Vì vậy:
+
+```javascript
+copy.specs;
+```
+
+và:
+
+```javascript
+product.specs;
+```
+
+vẫn trỏ đến cùng một object.
+
+Khi sửa:
+
+```javascript
+copy.specs.ram = 16;
+```
+
+thì `product.specs.ram` cũng bị đổi theo.
+
+---
