@@ -615,3 +615,151 @@ copy.specs.ram = 16;
 thì `product.specs.ram` cũng bị đổi theo.
 
 ---
+
+## Câu C1 — Refactor Code
+
+Code sau được viết lại bằng `filter`, `map`, `sort`, destructuring và arrow function. Yêu cầu là refactor trong tối đa 10 dòng. :contentReference[oaicite:0]{index=0}
+
+```javascript
+const processOrders = (orders) =>
+  orders
+    .filter(({ status, total }) => status === "completed" && total > 100000)
+    .map(({ id, customer, total }) => ({
+      id,
+      customer,
+      total,
+      discount: total * 0.1,
+      finalTotal: total - total * 0.1,
+    }))
+    .sort((a, b) => b.finalTotal - a.finalTotal);
+```
+
+### Giải thích
+
+- `filter()` dùng để lọc đơn hàng có `status === "completed"` và `total > 100000`.
+- `map()` dùng để tạo object mới gồm `id`, `customer`, `total`, `discount`, `finalTotal`.
+- `sort()` dùng để sắp xếp theo `finalTotal` giảm dần.
+- Destructuring như `{ status, total }` giúp lấy trực tiếp thuộc tính từ object.
+- Arrow function giúp code ngắn gọn hơn so với function thường.
+
+### So với code cũ
+
+Code cũ dùng nhiều vòng lặp `for`, nhiều biến tạm và tự viết thuật toán sort.  
+Code mới ngắn hơn, dễ đọc hơn và thể hiện rõ từng bước xử lý dữ liệu:
+
+```txt
+lọc đơn hàng → biến đổi dữ liệu → sắp xếp kết quả
+```
+
+## Câu C2 — Thiết kế API `miniArray`
+
+Yêu cầu: tự viết lại `map`, `filter`, `reduce`, không dùng built-in `.map()`, `.filter()`, `.reduce()`. :contentReference[oaicite:0]{index=0}
+
+```javascript
+const miniArray = {
+  map(arr, fn) {
+    const result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      result.push(fn(arr[i], i, arr));
+    }
+
+    return result;
+  },
+
+  filter(arr, fn) {
+    const result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      if (fn(arr[i], i, arr)) {
+        result.push(arr[i]);
+      }
+    }
+
+    return result;
+  },
+
+  reduce(arr, fn, initialValue) {
+    let accumulator = initialValue;
+
+    for (let i = 0; i < arr.length; i++) {
+      accumulator = fn(accumulator, arr[i], i, arr);
+    }
+
+    return accumulator;
+  },
+};
+
+// Test
+console.log(miniArray.map([1, 2, 3], (x) => x * 2));
+// [2, 4, 6]
+
+console.log(miniArray.filter([1, 2, 3, 4], (x) => x > 2));
+// [3, 4]
+
+console.log(miniArray.reduce([1, 2, 3, 4], (a, b) => a + b, 0));
+// 10
+```
+
+### Giải thích
+
+#### `miniArray.map(arr, fn)`
+
+`map` duyệt qua từng phần tử trong mảng, gọi hàm `fn` với từng phần tử, sau đó đưa kết quả vào mảng mới.
+
+Ví dụ:
+
+```javascript
+miniArray.map([1, 2, 3], (x) => x * 2);
+```
+
+Kết quả:
+
+```javascript
+[2, 4, 6];
+```
+
+---
+
+#### `miniArray.filter(arr, fn)`
+
+`filter` duyệt từng phần tử. Nếu hàm `fn` trả về `true`, phần tử đó được đưa vào mảng kết quả.
+
+Ví dụ:
+
+```javascript
+miniArray.filter([1, 2, 3, 4], (x) => x > 2);
+```
+
+Kết quả:
+
+```javascript
+[3, 4];
+```
+
+---
+
+#### `miniArray.reduce(arr, fn, initialValue)`
+
+`reduce` dùng để gom nhiều phần tử thành một giá trị duy nhất.
+
+Ví dụ:
+
+```javascript
+miniArray.reduce([1, 2, 3, 4], (a, b) => a + b, 0);
+```
+
+Diễn biến:
+
+```txt
+0 + 1 = 1
+1 + 2 = 3
+3 + 3 = 6
+6 + 4 = 10
+```
+
+Kết quả:
+
+```javascript
+10;
+```
