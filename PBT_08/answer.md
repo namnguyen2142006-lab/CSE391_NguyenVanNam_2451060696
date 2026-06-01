@@ -763,3 +763,5 @@ Kết quả:
 ```javascript
 10;
 ```
+
+Video phần D: https://drive.google.com/file/d/16bdhnyCtaWMAeuda8lMppAEjHP-Y1y6n/view?usp=drive_link
