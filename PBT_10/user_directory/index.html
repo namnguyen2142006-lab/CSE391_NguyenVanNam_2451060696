@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Directory</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <h1>User Directory</h1>
+
+      <div id="toast" class="toast hidden"></div>
+
+      <form id="userForm">
+        <input id="nameInput" type="text" placeholder="Name" required />
+        <input id="emailInput" type="email" placeholder="Email" required />
+        <input id="phoneInput" type="text" placeholder="Phone" required />
+        <button id="submitBtn" type="submit">Add User</button>
+      </form>
+
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search by name or email..."
+      />
+
+      <div id="loading" class="loading hidden">
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+
+      <div id="userList" class="user-list"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
