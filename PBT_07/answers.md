@@ -872,3 +872,5 @@ for (var i = 0; i < 5; i++)
 ```
 
 vì `var` không có block scope, khiến `setTimeout` in ra sai giá trị `i`. Nên sửa thành `let`.
+
+Video phần D: https://drive.google.com/file/d/1QPNZOR5nRxcDwj413RhFwm2_8H56i6HV/view?usp=sharing
